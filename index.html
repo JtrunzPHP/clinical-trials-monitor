@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Clinical Trials Monitor</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8fafc;color:#111827}
+.wrap{max-width:920px;margin:0 auto;padding:20px}
+h1{font-size:22px;font-weight:700}
+.sub{font-size:12px;color:#9ca3af;margin-top:3px}
+.sr{display:flex;gap:8px;margin:18px 0 14px;flex-wrap:wrap}
+.sg{display:flex;flex:1;min-width:200px}
+.sg.nct{flex:0.7}
+.sg input{flex:1;padding:9px 12px;border:1px solid #d1d5db;font-size:13px;outline:none;border-radius:7px 0 0 7px}
+.sg .mono{font-family:monospace}
+.btn{padding:9px 14px;border:none;border-radius:0 7px 7px 0;cursor:pointer;font-size:13px;font-weight:600;color:#fff}
+.bp{background:#4f46e5}
+.bd{background:#1f2937}
+.chips{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:12px}
+.cc{background:#eef2ff;color:#4f46e5}
+.cn{background:#f0fdf4;color:#16a34a}
+.chip button{background:none;border:none;cursor:pointer;font-weight:700;font-size:14px;padding:0;color:inherit}
+.dr{display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
+.dl{font-size:12px;color:#6b7280;margin-right:4px}
+.dbtn{padding:5px 11px;border-radius:6px;border:1px solid #e5e7eb;background:#fff;color:#6b7280;cursor:pointer;font-size:12px;font-weight:500;transition:all .12s}
+.dbtn.on{border:2px solid #4f46e5;background:#eef2ff;color:#4f46e5;font-weight:700}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+.tab{padding:12px 8px;border-radius:10px;border:1px solid #e5e7eb;background:#fff;cursor:pointer;text-align:center;transition:all .12s}
+.tab.on{border-width:2px}
+.ti{font-size:18px;margin-bottom:2px}
+.tc{font-size:20px;font-weight:700}
+.tl{font-size:11px;color:#6b7280}
+.rh{margin-bottom:10px}
+.rh h2{font-size:15px;font-weight:600}
+.rh .tot{font-weight:400;color:#9ca3af;font-size:13px}
+.card{border:1px solid #e5e7eb;border-radius:10px;background:#fff;margin-bottom:10px;overflow:hidden}
+.card-h{padding:14px 16px;cursor:pointer}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.cm{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+.nl{font-family:monospace;font-size:12px;font-weight:700;text-decoration:none}
+.sb{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600}
+.pb{font-size:10px;padding:2px 6px;border-radius:10px;background:#f3f4f6;color:#6b7280}
+.ctitle{font-size:14px;font-weight:600;color:#111827;line-height:1.35;margin-bottom:5px}
+.ci{font-size:11px;color:#9ca3af;display:flex;gap:14px;flex-wrap:wrap}
+.ci .upd{color:#6366f1;font-weight:600}
+.arr{font-size:11px;color:#9ca3af;flex-shrink:0}
+.cb{padding:0 16px 14px;border-top:1px solid #f3f4f6;padding-top:12px;display:none}
+.cb p{margin:0 0 8px;font-size:13px;color:#4b5563;line-height:1.55}
+.cb .stp{color:#ef4444;font-weight:500}
+.cb .lo{font-size:12px;color:#6b7280}
+.cb .vl{display:inline-block;margin-top:10px;font-size:12px;color:#6366f1;font-weight:600;text-decoration:none}
+.ld{text-align:center;padding:48px;color:#9ca3af;font-size:14px}
+.emp{text-align:center;padding:48px;color:#9ca3af;background:#f9fafb;border-radius:10px}
+.err{padding:14px;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;color:#dc2626;font-size:13px;margin-bottom:12px;line-height:1.5}
+.err b{display:block;margin-bottom:4px}
+.err .hint{margin-top:6px;font-size:12px;color:#9ca3af}
+.rbtn{margin-top:8px;padding:6px 16px;background:#ef4444;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600}
+.lm{text-align:center;margin-top:8px}
+.lm button{padding:10px 28px;background:#4f46e5;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600}
+.ft{margin-top:20px;padding:12px;background:#f1f5f9;border-radius:8px;font-size:11px;color:#9ca3af;line-height:1.5}
+@media(max-width:600px){.tabs{grid-template-columns:repeat(2,1fr)}.sg.nct{flex:1 1 100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>&#x1F52C; Clinical Trials Monitor</h1>
+  <p class="sub" id="subline">Live data from ClinicalTrials.gov API v2</p>
+  <div class="sr">
+    <div class="sg"><input id="condIn" placeholder="Filter by condition (e.g. breast cancer, diabetes)..."><button class="btn bp" id="condBtn">Search</button></div>
+    <div class="sg nct"><input id="nctIn" class="mono" placeholder="NCT ID (e.g. NCT04852770)..."><button class="btn bd" id="nctBtn">Lookup</button></div>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="dr" id="daysRow"></div>
+  <div class="tabs" id="tabsEl"></div>
+  <div class="rh" id="rh"></div>
+  <div id="errBox"></div>
+  <div id="content"></div>
+  <div id="lmBox"></div>
+  <div class="ft"><b>Source:</b> ClinicalTrials.gov API v2 (direct) &#183; Tap a study to expand &#183; NCT IDs link to full records</div>
+</div>
+<script>
+(function() {
+  var API = "https://clinicaltrials.gov/api/v2/studies";
+  var TABS = [
+    {key:"all",label:"All Changes",icon:"\uD83D\uDCCB",color:"#6366f1",bg:"#eef2ff",st:null},
+    {key:"terminated",label:"Terminated",icon:"\u26D4",color:"#ef4444",bg:"#fef2f2",st:"TERMINATED,WITHDRAWN,SUSPENDED"},
+    {key:"progressed",label:"Progressed",icon:"\uD83D\uDE80",color:"#22c55e",bg:"#f0fdf4",st:"ACTIVE_NOT_RECRUITING,COMPLETED,ENROLLING_BY_INVITATION"},
+    {key:"released",label:"Newly Posted",icon:"\uD83C\uDD95",color:"#3b82f6",bg:"#eff6ff",st:"NOT_YET_RECRUITING,RECRUITING"}
+  ];
+  var DAYOPTS = [1,3,7,14,30,60,90];
+  var SCMAP = {TERMINATED:"#ef4444",WITHDRAWN:"#ef4444",SUSPENDED:"#f59e0b",COMPLETED:"#22c55e",ACTIVE_NOT_RECRUITING:"#22c55e",ENROLLING_BY_INVITATION:"#22c55e",RECRUITING:"#3b82f6",NOT_YET_RECRUITING:"#8b5cf6"};
+
+  var S = {tab:"all",days:7,cond:"",nctMode:false,studies:[],total:0,counts:{},loading:false,err:null,np:null,hm:false};
+  var ctrl = null;
+
+  var el = function(id) { return document.getElementById(id); };
+  var esc = function(s) { var d = document.createElement("div"); d.textContent = s || ""; return d.innerHTML; };
+
+  function fmtD(d) {
+    if (!d) return "\u2014";
+    try { return new Date(d).toLocaleDateString("en-US", {month:"short",day:"numeric",year:"numeric"}); }
+    catch(e) { return d; }
+  }
+
+  function sc(s) { return SCMAP[s] || "#6b7280"; }
+
+  function bUrl(statuses, cond, days, size, token, ids) {
+    var p = new URLSearchParams({format:"json",pageSize:String(size || 20),countTotal:"true"});
+    if (ids) {
+      p.set("filter.ids", ids);
+    } else {
+      var dt = new Date();
+      dt.setDate(dt.getDate() - Math.max(days, 1));
+      var ds = dt.toISOString().split("T")[0];
+      p.set("query.term", "AREA[LastUpdatePostDate]RANGE[" + ds + ",MAX]");
+      p.set("sort", "LastUpdatePostDate:desc");
+      if (statuses) p.set("filter.overallStatus", statuses);
+      if (cond) p.set("query.cond", cond);
+    }
+    if (token) p.set("pageToken", token);
+    return API + "?" + p.toString();
+  }
+
+  function aFetch(url, sig) {
+    return fetch(url, {signal: sig}).then(function(r) {
+      if (!r.ok) throw new Error("API returned " + r.status);
+      return r.json();
+    });
+  }
+
+  function cardHTML(s, i) {
+    var p = s.protocolSection || {};
+    var idm = p.identificationModule || {};
+    var sm = p.statusModule || {};
+    var dm = p.designModule || {};
+    var sp = p.sponsorCollaboratorsModule || {};
+    var desc = p.descriptionModule || {};
+    var cla = p.contactsLocationsModule || {};
+    var nct = idm.nctId || "";
+    var title = idm.briefTitle || "Untitled";
+    var status = sm.overallStatus || "UNKNOWN";
+    var upd = sm.lastUpdatePostDateStruct ? sm.lastUpdatePostDateStruct.date : null;
+    var start = sm.startDateStruct ? sm.startDateStruct.date : null;
+    var phases = dm.phases || [];
+    var enr = dm.enrollmentInfo ? dm.enrollmentInfo.count : null;
+    var sponsor = (sp.leadSponsor ? sp.leadSponsor.name : null) || "Unknown";
+    var locs = cla.locations || [];
+    var c = sc(status);
+    var uid = "c" + i;
+
+    var phH = "";
+    for (var pi = 0; pi < phases.length; pi++) {
+      phH += '<span class="pb">' + esc(phases[pi].replace(/_/g, " ")) + '</span>';
+    }
+
+    var sumH = "";
+    if (desc.briefSummary) {
+      var bs = desc.briefSummary;
+      sumH = '<p>' + esc(bs.length > 500 ? bs.substring(0, 500) + "..." : bs) + '</p>';
+    }
+
+    var stpH = "";
+    if (sm.whyStopped) {
+      stpH = '<p class="stp">Why stopped: ' + esc(sm.whyStopped) + '</p>';
+    }
+
+    var orgH = "";
+    if (idm.organization && idm.organization.fullName) {
+      orgH = '<div class="lo">' + esc(idm.organization.fullName) + '</div>';
+    }
+
+    var locH = "";
+    if (locs.length > 0) {
+      var lp = [];
+      for (var li = 0; li < Math.min(locs.length, 3); li++) {
+        var parts = [];
+        if (locs[li].city) parts.push(locs[li].city);
+        if (locs[li].country) parts.push(locs[li].country);
+        lp.push(parts.join(", "));
+      }
+      locH = '<div class="lo">' + locs.length + ' site' + (locs.length !== 1 ? 's' : '') + ': ' + esc(lp.join(" | ")) + (locs.length > 3 ? ' +' + (locs.length - 3) : '') + '</div>';
+    }
+
+    var h = '<div class="card" style="border-left:4px solid ' + c + '">';
+    h += '<div class="card-h" onclick="TGL(\'' + uid + '\')">';
+    h += '<div class="card-top"><div style="flex:1;min-width:0">';
+    h += '<div class="cm">';
+    h += '<a href="https://clinicaltrials.gov/study/' + esc(nct) + '" target="_blank" class="nl" style="color:' + c + '" onclick="event.stopPropagation()">' + esc(nct) + '</a>';
+    h += '<span class="sb" style="background:' + c + '18;color:' + c + '">' + esc(status.replace(/_/g, " ")) + '</span>';
+    h += phH + '</div>';
+    h += '<div class="ctitle">' + esc(title) + '</div>';
+    h += '<div class="ci">';
+    h += '<span>' + esc(sponsor) + '</span>';
+    if (enr != null) h += '<span>' + enr.toLocaleString() + ' enrolled</span>';
+    if (start) h += '<span>Started ' + fmtD(start) + '</span>';
+    h += '<span class="upd">Updated ' + fmtD(upd) + '</span>';
+    h += '</div></div>';
+    h += '<span class="arr" id="ar' + uid + '">&#9660;</span>';
+    h += '</div></div>';
+    h += '<div class="cb" id="bd' + uid + '">';
+    h += sumH + stpH + orgH + locH;
+    h += '<a href="https://clinicaltrials.gov/study/' + esc(nct) + '" target="_blank" class="vl">View full record &#8594;</a>';
+    h += '</div></div>';
+    return h;
+  }
+
+  window.TGL = function(uid) {
+    var bd = el("bd" + uid);
+    var ar = el("ar" + uid);
+    if (!bd) return;
+    var isOpen = bd.style.display !== "none";
+    bd.style.display = isOpen ? "none" : "block";
+    ar.innerHTML = isOpen ? "&#9660;" : "&#9650;";
+  };
+
+  function render() {
+    var ch = "";
+    if (S.cond) ch += '<span class="chip cc">Condition: <b>' + esc(S.cond) + '</b> <button onclick="CLRC()">&#215;</button></span>';
+    if (S.nctMode) ch += '<span class="chip cn">NCT lookup mode <button onclick="CLRN()">&#215;</button></span>';
+    el("chips").innerHTML = ch;
+
+    if (!S.nctMode) {
+      var dh = '<span class="dl">Timeframe:</span>';
+      for (var di = 0; di < DAYOPTS.length; di++) {
+        var d = DAYOPTS[di];
+        dh += '<button class="dbtn' + (S.days === d ? ' on' : '') + '" onclick="SD(' + d + ')">' + (d === 1 ? '24h' : d + 'd') + '</button>';
+      }
+      el("daysRow").innerHTML = dh;
+      el("daysRow").style.display = "flex";
+    } else {
+      el("daysRow").style.display = "none";
+    }
+
+    if (!S.nctMode) {
+      var th = "";
+      for (var ti = 0; ti < TABS.length; ti++) {
+        var t = TABS[ti];
+        var on = S.tab === t.key;
+        th += '<button class="tab' + (on ? ' on' : '') + '" style="' + (on ? 'border-color:' + t.color + ';background:' + t.bg : '') + '" onclick="ST(\'' + t.key + '\')">';
+        th += '<div class="ti">' + t.icon + '</div>';
+        th += '<div class="tc" style="color:' + t.color + '">' + (S.counts[t.key] != null ? S.counts[t.key].toLocaleString() : '\u2014') + '</div>';
+        th += '<div class="tl">' + t.label + '</div></button>';
+      }
+      el("tabsEl").innerHTML = th;
+      el("tabsEl").style.display = "grid";
+    } else {
+      el("tabsEl").style.display = "none";
+    }
+
+    var at = null;
+    for (var ai = 0; ai < TABS.length; ai++) { if (TABS[ai].key === S.tab) { at = TABS[ai]; break; } }
+    el("rh").innerHTML = '<h2>' + (S.nctMode ? 'NCT Lookup' : at.icon + ' ' + at.label) + ' <span class="tot">| ' + S.total.toLocaleString() + ' ' + (S.total === 1 ? 'study' : 'studies') + '</span></h2>';
+
+    if (S.err) {
+      el("errBox").innerHTML = '<div class="err"><b>Failed to load data</b>' + esc(S.err) + '<div class="hint">Check your connection or try a different filter.</div><button class="rbtn" onclick="RTR()">Retry</button></div>';
+    } else {
+      el("errBox").innerHTML = "";
+    }
+
+    if (S.loading && S.studies.length === 0 && !S.err) {
+      el("content").innerHTML = '<div class="ld">Fetching from ClinicalTrials.gov...</div>';
+    } else if (!S.loading && !S.err && S.studies.length === 0) {
+      el("content").innerHTML = '<div class="emp"><div style="font-size:28px;margin-bottom:6px">&#128270;</div><div>No studies found. Try a wider timeframe or different filter.</div></div>';
+    } else {
+      var cards = "";
+      for (var ci = 0; ci < S.studies.length; ci++) {
+        cards += cardHTML(S.studies[ci], ci);
+      }
+      el("content").innerHTML = cards;
+    }
+
+    if (S.hm && !S.loading) {
+      el("lmBox").innerHTML = '<div class="lm"><button onclick="LM()">Load more (' + S.studies.length + ' of ' + S.total.toLocaleString() + ')</button></div>';
+    } else if (S.loading && S.studies.length > 0) {
+      el("lmBox").innerHTML = '<div style="text-align:center;padding:16px;color:#9ca3af;font-size:13px">Loading more...</div>';
+    } else {
+      el("lmBox").innerHTML = "";
+    }
+  }
+
+  function load(append, token) {
+    if (ctrl) ctrl.abort();
+    ctrl = new AbortController();
+    S.loading = true;
+    S.err = null;
+    if (!append) { S.studies = []; S.total = 0; }
+    render();
+
+    var t = null;
+    for (var i = 0; i < TABS.length; i++) { if (TABS[i].key === S.tab) { t = TABS[i]; break; } }
+    var url = bUrl(t ? t.st : null, S.cond, S.days, 20, token || null, null);
+
+    aFetch(url, ctrl.signal).then(function(data) {
+      var ns = data.studies || [];
+      S.studies = append ? S.studies.concat(ns) : ns;
+      S.total = data.totalCount || 0;
+      S.np = data.nextPageToken || null;
+      S.hm = !!data.nextPageToken;
+
+      if (!append) {
+        S.counts = {};
+        S.counts[S.tab] = S.total;
+        var proms = [];
+        for (var j = 0; j < TABS.length; j++) {
+          if (TABS[j].key === S.tab) continue;
+          (function(tb) {
+            proms.push(
+              aFetch(bUrl(tb.st, S.cond, S.days, 1, null, null), ctrl.signal)
+                .then(function(dd) { S.counts[tb.key] = dd.totalCount || 0; })
+                .catch(function() { S.counts[tb.key] = 0; })
+            );
+          })(TABS[j]);
+        }
+        return Promise.all(proms);
+      }
+    }).then(function() {
+      S.loading = false;
+      render();
+    }).catch(function(e) {
+      if (e.name !== "AbortError") {
+        S.err = e.message;
+        S.loading = false;
+        render();
+      }
+    });
+  }
+
+  function nctLookup(raw) {
+    var parts = raw.split(/[,\s|]+/);
+    var clean = [];
+    for (var i = 0; i < parts.length; i++) {
+      var s = parts[i].trim().toUpperCase();
+      if (s.indexOf("NCT") === 0) clean.push(s);
+    }
+    if (clean.length === 0) { S.err = "Enter valid NCT IDs (e.g. NCT04852770)"; render(); return; }
+    if (ctrl) ctrl.abort();
+    ctrl = new AbortController();
+    S.nctMode = true;
+    S.loading = true;
+    S.err = null;
+    S.studies = [];
+    render();
+
+    aFetch(bUrl(null, null, 0, 50, null, clean.join(",")), ctrl.signal)
+      .then(function(data) {
+        S.studies = data.studies || [];
+        S.total = data.totalCount || 0;
+        S.hm = false;
+        S.loading = false;
+        render();
+      }).catch(function(e) {
+        if (e.name !== "AbortError") {
+          S.err = e.message;
+          S.loading = false;
+          render();
+        }
+      });
+  }
+
+  window.ST = function(k) { S.tab = k; load(); };
+  window.SD = function(d) { S.days = d; load(); };
+  window.CLRC = function() { S.cond = ""; el("condIn").value = ""; load(); };
+  window.CLRN = function() { S.nctMode = false; el("nctIn").value = ""; load(); };
+  window.RTR = function() { S.nctMode ? nctLookup(el("nctIn").value) : load(); };
+  window.LM = function() { load(true, S.np); };
+
+  el("condBtn").onclick = function() { S.nctMode = false; S.cond = el("condIn").value.trim(); load(); };
+  el("nctBtn").onclick = function() { var v = el("nctIn").value.trim(); if (v) nctLookup(v); };
+  el("condIn").onkeydown = function(e) { if (e.key === "Enter") { S.nctMode = false; S.cond = el("condIn").value.trim(); load(); } };
+  el("nctIn").onkeydown = function(e) { if (e.key === "Enter") { var v = el("nctIn").value.trim(); if (v) nctLookup(v); } };
+
+  render();
+  load();
+})();
+</script>
+</body>
+</html>
