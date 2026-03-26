@@ -1,15 +1,15 @@
 // send-report.js
-// Fetches clinical trial changes from the last 12 hours and emails a digest.
+// Fetches clinical trial changes and emails a digest.
 // Runs via GitHub Actions at 6am and 6pm ET.
 //
 // BEFORE DEPLOYING: Replace YOURUSERNAME below with your actual GitHub username.
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || "you@example.com";
-const FROM_EMAIL = process.env.FROM_EMAIL || "Clinical Trials Monitor <alerts@yourdomain.com>";
+const FROM_EMAIL = process.env.FROM_EMAIL || "Clinical Trials Monitor <onboarding@resend.dev>";
 
 // *** CHANGE THIS to your actual GitHub Pages URL ***
-const DASHBOARD_URL = "https://jtrunzphp.github.io/clinical-trials-monitor/";
+const DASHBOARD_URL = "https://YOURUSERNAME.github.io/clinical-trials-monitor/";
 
 const CT_API = "https://clinicaltrials.gov/api/v2/studies";
 
@@ -18,6 +18,33 @@ const CATEGORIES = [
   { key: "progressed", label: "Progressed", statuses: "ACTIVE_NOT_RECRUITING,COMPLETED,ENROLLING_BY_INVITATION", color: "#22c55e", icon: "&#x1F680;" },
   { key: "released", label: "Newly Posted", statuses: "NOT_YET_RECRUITING,RECRUITING", color: "#3b82f6", icon: "&#x1F195;" },
 ];
+
+// ============================================================
+// URL builder — avoids URLSearchParams encoding issues
+// with the AREA[] bracket syntax
+// ============================================================
+
+function buildApiUrl(statuses, sinceDate, pageSize, pageToken) {
+  // Build the query.term with AREA syntax — we encode it manually
+  // to keep brackets readable by the API
+  var term = "AREA[LastUpdatePostDate]RANGE[" + sinceDate + ",MAX]";
+
+  var url = CT_API
+    + "?format=json"
+    + "&pageSize=" + (pageSize || 20)
+    + "&countTotal=true"
+    + "&sort=LastUpdatePostDate:desc"
+    + "&query.term=" + encodeURIComponent(term);
+
+  if (statuses) {
+    url += "&filter.overallStatus=" + encodeURIComponent(statuses);
+  }
+  if (pageToken) {
+    url += "&pageToken=" + encodeURIComponent(pageToken);
+  }
+
+  return url;
+}
 
 // ============================================================
 // Fetch helpers
@@ -30,23 +57,27 @@ async function fetchStudies(statuses, sinceDate, maxPages) {
   var totalCount = 0;
 
   for (var page = 0; page < maxPages; page++) {
-    var params = new URLSearchParams({
-      format: "json",
-      pageSize: "100",
-      countTotal: "true",
-      "query.term": "AREA[LastUpdatePostDate]RANGE[" + sinceDate + ",MAX]",
-      sort: "LastUpdatePostDate:desc",
-    });
-    if (statuses) params.set("filter.overallStatus", statuses);
-    if (token) params.set("pageToken", token);
+    var url = buildApiUrl(statuses, sinceDate, 100, token);
 
-    var resp = await fetch(CT_API + "?" + params.toString());
-    if (!resp.ok) throw new Error("API error: " + resp.status);
+    if (page === 0) {
+      console.log("    Request URL: " + url);
+    }
+
+    var resp = await fetch(url);
+    if (!resp.ok) {
+      var body = await resp.text().catch(function() { return ""; });
+      throw new Error("API error " + resp.status + ": " + body.substring(0, 200));
+    }
     var data = await resp.json();
 
     totalCount = data.totalCount || 0;
     all = all.concat(data.studies || []);
     token = data.nextPageToken;
+
+    if (page === 0) {
+      console.log("    Response: totalCount=" + totalCount + ", studies returned=" + (data.studies || []).length + ", hasNextPage=" + !!token);
+    }
+
     if (!token) break;
   }
 
@@ -63,16 +94,15 @@ async function fetchAllCategories(sinceDate) {
     console.log("    -> " + results[cat.key].totalCount + " studies");
   }
 
-  // Total across all statuses
-  var allParams = new URLSearchParams({
-    format: "json",
-    pageSize: "1",
-    countTotal: "true",
-    "query.term": "AREA[LastUpdatePostDate]RANGE[" + sinceDate + ",MAX]",
-  });
-  var allResp = await fetch(CT_API + "?" + allParams.toString());
+  // Total across all statuses (no status filter)
+  console.log("  Fetching All Changes...");
+  var allUrl = buildApiUrl(null, sinceDate, 1, null);
+  console.log("    Request URL: " + allUrl);
+  var allResp = await fetch(allUrl);
+  if (!allResp.ok) throw new Error("API error on total count: " + allResp.status);
   var allData = await allResp.json();
   results.allCount = allData.totalCount || 0;
+  console.log("    -> " + results.allCount + " total");
 
   return results;
 }
@@ -90,7 +120,7 @@ function esc(s) {
 }
 
 function fmtDate(d) {
-  if (!d) return "—";
+  if (!d) return "n/a";
   try {
     return new Date(d).toLocaleDateString("en-US", {
       month: "short", day: "numeric", year: "numeric"
@@ -269,18 +299,22 @@ async function main() {
   var now = new Date();
   var hour = now.getUTCHours();
 
-  // Look back 12 hours
-  var since = new Date(now.getTime() - 12 * 60 * 60 * 1000);
+  // The API filters by DATE not timestamp, so we look back 1 full day
+  // to make sure we catch everything in the 12-hour window.
+  // This means both the AM and PM emails may show some overlap,
+  // but you won't miss anything.
+  var since = new Date(now.getTime() - 24 * 60 * 60 * 1000);
   var sinceStr = since.toISOString().split("T")[0];
 
-  // Determine AM or PM window (rough UTC check)
-  var isAM = hour < 16;
+  // Determine AM or PM window
+  var isAM = hour < 16; // before ~noon UTC = morning ET
   var windowLabel = isAM
     ? "Overnight Digest (6 PM - 6 AM ET)"
     : "Daytime Digest (6 AM - 6 PM ET)";
 
   console.log("Window: " + windowLabel);
-  console.log("Since: " + sinceStr);
+  console.log("Since date: " + sinceStr);
+  console.log("Now: " + now.toISOString());
   console.log("");
 
   // Fetch all data
@@ -288,7 +322,7 @@ async function main() {
   var results = await fetchAllCategories(sinceStr);
 
   console.log("");
-  console.log("Summary:");
+  console.log("=== SUMMARY ===");
   console.log("  Total changes: " + results.allCount);
   for (var i = 0; i < CATEGORIES.length; i++) {
     console.log("  " + CATEGORIES[i].label + ": " + results[CATEGORIES[i].key].totalCount);
@@ -304,10 +338,10 @@ async function main() {
   console.log("Sending email to " + RECIPIENT_EMAIL + "...");
   await sendEmail(subject, emailHTML);
   console.log("");
-  console.log("Done!");
+  console.log("=== DONE ===");
 }
 
 main().catch(function(err) {
-  console.error("FATAL ERROR:", err);
+  console.error("FATAL ERROR:", err.message || err);
   process.exit(1);
 });
