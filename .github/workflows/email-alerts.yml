@@ -3,15 +3,16 @@ name: Clinical Trials Email Alerts
 on:
   schedule:
     # 6:00 AM ET (EDT = UTC-4, so 10:00 UTC)
-    # If you're in EST (winter), change to 11
     - cron: '0 10 * * *'
-
     # 6:00 PM ET (EDT = UTC-4, so 22:00 UTC)
-    # If you're in EST (winter), change to 23
     - cron: '0 22 * * *'
 
-  # Lets you trigger manually from the Actions tab for testing
+  # Manual trigger for testing
   workflow_dispatch:
+
+# Need write permission to commit last-sent.json back to the repo
+permissions:
+  contents: write
 
 jobs:
   send-report:
@@ -32,3 +33,11 @@ jobs:
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
         run: node send-report.js
+
+      - name: Save dedup tracking file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add last-sent.json
+          git diff --staged --quiet || git commit -m "Update last-sent.json [skip ci]"
+          git push
