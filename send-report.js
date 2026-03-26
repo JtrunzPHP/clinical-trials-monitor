@@ -9,7 +9,7 @@ const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || "you@example.com";
 const FROM_EMAIL = process.env.FROM_EMAIL || "Clinical Trials Monitor <alerts@yourdomain.com>";
 
 // *** CHANGE THIS to your actual GitHub Pages URL ***
-const DASHBOARD_URL = "https://YOURUSERNAME.github.io/clinical-trials-monitor/";
+const DASHBOARD_URL = "https://jtrunzphp.github.io/clinical-trials-monitor/";
 
 const CT_API = "https://clinicaltrials.gov/api/v2/studies";
 
