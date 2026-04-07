@@ -36,7 +36,6 @@ h1{font-size:22px;font-weight:700}
 .rh{margin-bottom:10px}
 .rh h2{font-size:15px;font-weight:600}
 .rh .tot{font-weight:400;color:#9ca3af;font-size:13px}
-/* Cards */
 .card{border:1px solid #e5e7eb;border-radius:10px;background:#fff;margin-bottom:10px;overflow:hidden}
 .card.wl-hit{border-color:#d97706;box-shadow:0 0 0 1px #fef3c7}
 .card-h{padding:14px 16px;cursor:pointer}
@@ -98,7 +97,6 @@ h1{font-size:22px;font-weight:700}
 //  WATCHLIST — Keep in sync with send-report.js
 // ============================================================
 var WATCHLIST = [
-  // Med Devices
   {ticker:"DXCM", sponsors:["Dexcom"],             sector:"Med Devices",    context:"CGM competitive positioning — Stelo OTC, G7/G8 pipeline"},
   {ticker:"PODD", sponsors:["Insulet"],             sector:"Med Devices",    context:"Omnipod 5/6 automated insulin delivery expansion"},
   {ticker:"TNDM", sponsors:["Tandem Diabetes"],     sector:"Med Devices",    context:"Mobi pump, Control-IQ algorithm, competitive vs PODD"},
@@ -107,25 +105,19 @@ var WATCHLIST = [
   {ticker:"PRCT", sponsors:["PROCEPT BioRobotics"], sector:"Med Devices",    context:"Aquablation therapy for BPH — WATER/WATERJETS data"},
   {ticker:"CVRX", sponsors:["CVRx"],                sector:"Med Devices",    context:"Barostim neo — heart failure neuromodulation, CMS coverage"},
   {ticker:"BBNX", sponsors:["BrainBox"],            sector:"Med Devices",    context:"AI-powered EEG for brain injury assessment"},
-  // HC Services
   {ticker:"OPCH", sponsors:["Option Care","BioScrip"],  sector:"HC Services",  context:"Home/alternate-site infusion, biosimilar transition tailwind"},
   {ticker:"PACS", sponsors:["PACS Group"],               sector:"HC Services",  context:"Post-acute/skilled nursing volumes, DOJ overhang"},
   {ticker:"WAY",  sponsors:["Waystar"],                  sector:"HC Services",  context:"Revenue cycle management, claims automation"},
   {ticker:"OPRX", sponsors:["OptimizeRx"],               sector:"HC Services",  context:"Digital health messaging, pharma channel"},
-  // Dental
   {ticker:"PARK", sponsors:["Park Dental"],          sector:"Dental",         context:"DSO rollup, VIE structure, Medicaid dental expansion"},
-  // Specialty Pharma
   {ticker:"GRDN", sponsors:["Guardian Pharmacy"],    sector:"Specialty Pharma",context:"LTC pharmacy — IRA/MFP Part D reimbursement headwind"},
-  // Managed Care
   {ticker:"UNH",  sponsors:["UnitedHealth","Optum","UnitedHealthcare"], sector:"Managed Care", context:"Optum clinical programs, value-based care pilots"},
   {ticker:"ELV",  sponsors:["Elevance","Anthem","Carelon"],             sector:"Managed Care", context:"Carelon services, Medicaid managed care"},
   {ticker:"CNC",  sponsors:["Centene","WellCare"],                      sector:"Managed Care", context:"Medicaid MCO, rate adequacy exposure"},
   {ticker:"MOH",  sponsors:["Molina"],                                  sector:"Managed Care", context:"Medicaid/Medicare dual-eligible focus"},
   {ticker:"CVS",  sponsors:["CVS Health","Aetna","CVS Caremark"],       sector:"Managed Care", context:"Aetna MCO + Caremark PBM + Oak Street primary care"},
-  // GLP-1
   {ticker:"LLY",  sponsors:["Eli Lilly","Lilly"],    sector:"GLP-1 / Obesity",context:"Tirzepatide (Mounjaro/Zepbound), orforglipron oral pivot"},
   {ticker:"NVO",  sponsors:["Novo Nordisk"],          sector:"GLP-1 / Obesity",context:"Semaglutide (Ozempic/Wegovy), oral sema, amycretin"},
-  // Diagnostics / CDMO
   {ticker:"WAT",  sponsors:["Waters Corporation"],    sector:"Diagnostics",   context:"LC/MS platforms, Wyatt Technology acquisition"},
   {ticker:"OXB",  sponsors:["Oxford Biomedica"],      sector:"CDMO",          context:"Gene therapy CDMO — backlog-to-revenue, CMD June 2026"},
 ];
@@ -159,50 +151,70 @@ var TABS = [
 var DAYOPTS = [1,3,7,14,30,60,90];
 var SCMAP = {TERMINATED:"#ef4444",WITHDRAWN:"#ef4444",SUSPENDED:"#f59e0b",COMPLETED:"#22c55e",ACTIVE_NOT_RECRUITING:"#22c55e",ENROLLING_BY_INVITATION:"#22c55e",RECRUITING:"#3b82f6",NOT_YET_RECRUITING:"#8b5cf6"};
 
+// State
 var S = {tab:"watchlist",days:7,cond:"",nctMode:false,studies:[],total:0,counts:{},loading:false,err:null,np:null,hm:false,wlStudies:[]};
 var ctrl = null;
+// Track current load generation to ignore stale responses
+var loadGen = 0;
 
 var el = function(id){return document.getElementById(id)};
 var esc = function(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML};
-
 function fmtD(d){if(!d)return"\u2014";try{return new Date(d).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})}catch(e){return d}}
 function sc(s){return SCMAP[s]||"#6b7280"}
 
-function bUrl(statuses,cond,days,size,token,ids){
-  var p=new URLSearchParams({format:"json",pageSize:String(size||20),countTotal:"true"});
-  if(ids){p.set("filter.ids",ids)}
-  else{
-    var dt=new Date();dt.setDate(dt.getDate()-Math.max(days,1));
-    var ds=dt.toISOString().split("T")[0];
-    p.set("query.term","AREA[LastUpdatePostDate]RANGE["+ds+",MAX]");
-    p.set("sort","LastUpdatePostDate:desc");
-    if(statuses)p.set("filter.overallStatus",statuses);
-    if(cond)p.set("query.cond",cond);
+// ============================================================
+//  HELPERS
+// ============================================================
+
+function sinceDate(days) {
+  var dt = new Date();
+  dt.setDate(dt.getDate() - Math.max(days, 1));
+  return dt.toISOString().split("T")[0];
+}
+
+function bUrl(statuses, cond, days, size, token, ids) {
+  var p = new URLSearchParams({format:"json", pageSize:String(size||20), countTotal:"true"});
+  if (ids) {
+    p.set("filter.ids", ids);
+  } else {
+    var ds = sinceDate(days);
+    p.set("query.term", "AREA[LastUpdatePostDate]RANGE[" + ds + ",MAX]");
+    p.set("sort", "LastUpdatePostDate:desc");
+    if (statuses) p.set("filter.overallStatus", statuses);
+    if (cond) p.set("query.cond", cond);
   }
-  if(token)p.set("pageToken",token);
-  return API+"?"+p.toString();
+  if (token) p.set("pageToken", token);
+  return API + "?" + p.toString();
 }
 
-function buildSponsorQuery(){
-  var terms=[];
-  for(var i=0;i<WATCHLIST.length;i++){
-    for(var j=0;j<WATCHLIST[i].sponsors.length;j++) terms.push(WATCHLIST[i].sponsors[j]);
+function aFetch(url, sig) {
+  return fetch(url, {signal:sig}).then(function(r) {
+    if (!r.ok) throw new Error("API returned " + r.status);
+    return r.json();
+  });
+}
+
+function tagWL(studies) {
+  for (var i = 0; i < studies.length; i++) studies[i]._wl = matchWL(studies[i]);
+}
+
+function filterWL(studies) {
+  var out = [];
+  for (var i = 0; i < studies.length; i++) {
+    if (studies[i]._wl) out.push(studies[i]);
   }
-  return terms.join(" OR ");
+  out.sort(function(a, b) {
+    var sa = /TERMINATED|WITHDRAWN|SUSPENDED/.test((a.protocolSection.statusModule || {}).overallStatus || "") ? 0 : 1;
+    var sb = /TERMINATED|WITHDRAWN|SUSPENDED/.test((b.protocolSection.statusModule || {}).overallStatus || "") ? 0 : 1;
+    if (sa !== sb) return sa - sb;
+    return (a._wl.ticker || "").localeCompare(b._wl.ticker || "");
+  });
+  return out;
 }
 
-function bWatchlistUrl(days,cond,size,token){
-  var dt=new Date();dt.setDate(dt.getDate()-Math.max(days,1));
-  var ds=dt.toISOString().split("T")[0];
-  var p=new URLSearchParams({format:"json",pageSize:String(size||100),countTotal:"true",sort:"LastUpdatePostDate:desc"});
-  p.set("query.term","AREA[LastUpdatePostDate]RANGE["+ds+",MAX]");
-  p.set("query.spons",buildSponsorQuery());
-  if(cond)p.set("query.cond",cond);
-  if(token)p.set("pageToken",token);
-  return API+"?"+p.toString();
+function getNct(study) {
+  try { return study.protocolSection.identificationModule.nctId; } catch(e) { return null; }
 }
-
-function aFetch(url,sig){return fetch(url,{signal:sig}).then(function(r){if(!r.ok)throw new Error("API returned "+r.status);return r.json()})}
 
 // ============================================================
 //  CARD HTML
@@ -276,7 +288,6 @@ function cardHTML(s, i) {
   var h = '<div class="' + cardCls + '" style="border-left:4px solid ' + c + '">';
   h += '<div class="card-h" onclick="TGL(\'' + uid + '\')">';
   h += '<div class="card-top"><div style="flex:1;min-width:0">';
-  // Ticker badge row
   if (wl) h += '<div style="margin-bottom:4px">' + wlH + '</div>';
   h += '<div class="cm">';
   h += '<a href="https://clinicaltrials.gov/study/' + esc(nct) + '" target="_blank" class="nl" style="color:' + c + '" onclick="event.stopPropagation()">' + esc(nct) + '</a>';
@@ -312,16 +323,14 @@ window.TGL = function(uid) {
 // ============================================================
 
 function render() {
-  // Badge
   el("wlBadge").textContent = WATCHLIST.length + " companies tracked";
+  el("subline").textContent = "ClinicalTrials.gov API v2 \u00B7 Showing " + (S.days === 1 ? "last 24 hours" : "last " + S.days + " days");
 
-  // Chips
   var ch = "";
   if (S.cond) ch += '<span class="chip cc">Condition: <b>' + esc(S.cond) + '</b> <button onclick="CLRC()">&#215;</button></span>';
   if (S.nctMode) ch += '<span class="chip cn">NCT lookup mode <button onclick="CLRN()">&#215;</button></span>';
   el("chips").innerHTML = ch;
 
-  // Days
   if (!S.nctMode) {
     var dh = '<span class="dl">Timeframe:</span>';
     for (var di = 0; di < DAYOPTS.length; di++) {
@@ -334,7 +343,6 @@ function render() {
     el("daysRow").style.display = "none";
   }
 
-  // Tabs
   if (!S.nctMode) {
     var th = "";
     for (var ti = 0; ti < TABS.length; ti++) {
@@ -351,35 +359,33 @@ function render() {
     el("tabsEl").style.display = "none";
   }
 
-  // Results header
-  var at = null;
-  for (var ai = 0; ai < TABS.length; ai++) { if (TABS[ai].key === S.tab) { at = TABS[ai]; break; } }
   var displayStudies = (S.tab === "watchlist") ? S.wlStudies : S.studies;
   var displayTotal = (S.tab === "watchlist") ? S.wlStudies.length : S.total;
+
+  var at = null;
+  for (var ai = 0; ai < TABS.length; ai++) { if (TABS[ai].key === S.tab) { at = TABS[ai]; break; } }
 
   var rhH = '';
   if (S.nctMode) {
     rhH = '<h2>NCT Lookup <span class="tot">| ' + S.total.toLocaleString() + ' ' + (S.total === 1 ? 'study' : 'studies') + '</span></h2>';
   } else if (S.tab === "watchlist") {
-    rhH = '<h2>' + at.icon + ' Watchlist Hits <span class="tot">| ' + displayTotal + ' matching ' + (displayTotal === 1 ? 'trial' : 'trials') + ' from your coverage universe</span></h2>';
+    rhH = '<h2>' + at.icon + ' Watchlist Hits <span class="tot">| ' + displayTotal + ' trial' + (displayTotal !== 1 ? 's' : '') + ' from your coverage universe (' + (S.days === 1 ? '24h' : S.days + 'd') + ' window)</span></h2>';
   } else {
-    rhH = '<h2>' + at.icon + ' ' + at.label + ' <span class="tot">| ' + displayTotal.toLocaleString() + ' ' + (displayTotal === 1 ? 'study' : 'studies') + '</span></h2>';
+    rhH = '<h2>' + at.icon + ' ' + at.label + ' <span class="tot">| ' + displayTotal.toLocaleString() + ' ' + (displayTotal === 1 ? 'study' : 'studies') + ' (' + (S.days === 1 ? '24h' : S.days + 'd') + ')</span></h2>';
   }
   el("rh").innerHTML = rhH;
 
-  // Errors
   if (S.err) {
     el("errBox").innerHTML = '<div class="err"><b>Failed to load data</b>' + esc(S.err) + '<button class="rbtn" onclick="RTR()">Retry</button></div>';
   } else {
     el("errBox").innerHTML = "";
   }
 
-  // Content
   if (S.loading && displayStudies.length === 0 && !S.err) {
-    el("content").innerHTML = '<div class="ld">Fetching from ClinicalTrials.gov...</div>';
+    el("content").innerHTML = '<div class="ld">Fetching from ClinicalTrials.gov' + (S.tab === "watchlist" ? ' (scanning ' + WATCHLIST.length + ' companies)' : '') + '...</div>';
   } else if (!S.loading && !S.err && displayStudies.length === 0) {
     var emptyMsg = S.tab === "watchlist"
-      ? "No trials from your watchlist companies in this timeframe. Try widening to 30d or 90d."
+      ? "No trials from your watchlist companies in the last " + (S.days === 1 ? "24 hours" : S.days + " days") + ". Try widening the timeframe."
       : "No studies found. Try a wider timeframe or different filter.";
     el("content").innerHTML = '<div class="emp"><div style="font-size:28px;margin-bottom:6px">&#128270;</div><div>' + emptyMsg + '</div></div>';
   } else {
@@ -388,10 +394,9 @@ function render() {
     el("content").innerHTML = cards;
   }
 
-  // Load more (not for watchlist — we show all matches)
   if (S.tab !== "watchlist" && S.hm && !S.loading) {
     el("lmBox").innerHTML = '<div class="lm"><button onclick="LM()">Load more (' + S.studies.length + ' of ' + S.total.toLocaleString() + ')</button></div>';
-  } else if (S.loading && S.studies.length > 0) {
+  } else if (S.loading && displayStudies.length > 0) {
     el("lmBox").innerHTML = '<div style="text-align:center;padding:16px;color:#9ca3af;font-size:13px">Loading more...</div>';
   } else {
     el("lmBox").innerHTML = "";
@@ -399,108 +404,168 @@ function render() {
 }
 
 // ============================================================
-//  DATA LOADING
+//  DATA LOADING — Watchlist Tab
+//  Strategy: batch sponsors into groups of 5, query each batch
+//  with query.spons, merge & dedup. This lets the API filter
+//  server-side so timeframe changes return correct results.
 // ============================================================
-
-function tagWL(studies) {
-  for (var i = 0; i < studies.length; i++) studies[i]._wl = matchWL(studies[i]);
-}
-
-function filterWL(studies) {
-  var out = [];
-  for (var i = 0; i < studies.length; i++) {
-    if (studies[i]._wl) out.push(studies[i]);
-  }
-  // Sort: terminated first, then by ticker
-  out.sort(function(a, b) {
-    var sa = /TERMINATED|WITHDRAWN|SUSPENDED/.test((a.protocolSection.statusModule||{}).overallStatus||"") ? 0 : 1;
-    var sb = /TERMINATED|WITHDRAWN|SUSPENDED/.test((b.protocolSection.statusModule||{}).overallStatus||"") ? 0 : 1;
-    if (sa !== sb) return sa - sb;
-    return (a._wl.ticker||"").localeCompare(b._wl.ticker||"");
-  });
-  return out;
-}
 
 function loadWatchlist() {
   if (ctrl) ctrl.abort();
   ctrl = new AbortController();
+  loadGen++;
+  var myGen = loadGen;
+
   S.loading = true;
   S.err = null;
   S.studies = [];
   S.wlStudies = [];
+  S.counts = {};
   render();
 
-  var url = bWatchlistUrl(S.days, S.cond, 100, null);
-  var allStudies = [];
-  var totalCount = 0;
-  var pages = 0;
-  var maxPages = 5;
+  var ds = sinceDate(S.days);
+  var dateTerm = "AREA[LastUpdatePostDate]RANGE[" + ds + ",MAX]";
+  console.log("[WL] Loading watchlist, days=" + S.days + ", since=" + ds);
 
-  function fetchPage(pageUrl) {
-    return aFetch(pageUrl, ctrl.signal).then(function(data) {
-      totalCount = data.totalCount || 0;
-      var ns = data.studies || [];
-      allStudies = allStudies.concat(ns);
-      tagWL(ns);
-      pages++;
-      if (data.nextPageToken && pages < maxPages) {
-        return fetchPage(bWatchlistUrl(S.days, S.cond, 100, data.nextPageToken));
-      }
-    });
+  // Collect unique sponsor terms
+  var sponsorTerms = [];
+  var seen = {};
+  for (var i = 0; i < WATCHLIST.length; i++) {
+    for (var j = 0; j < WATCHLIST[i].sponsors.length; j++) {
+      var key = WATCHLIST[i].sponsors[j].toLowerCase();
+      if (!seen[key]) { seen[key] = true; sponsorTerms.push(WATCHLIST[i].sponsors[j]); }
+    }
   }
 
-  fetchPage(url).then(function() {
+  // Batch into groups of 5 joined with OR
+  var BSIZE = 5;
+  var batches = [];
+  for (var b = 0; b < sponsorTerms.length; b += BSIZE) {
+    batches.push(sponsorTerms.slice(b, b + BSIZE).join(" OR "));
+  }
+  console.log("[WL] " + sponsorTerms.length + " sponsor terms in " + batches.length + " batches");
+
+  // Dedup accumulator
+  var allStudies = [];
+  var nctSeen = {};
+
+  function addUnique(studies) {
+    for (var k = 0; k < studies.length; k++) {
+      var nct = getNct(studies[k]);
+      if (nct && !nctSeen[nct]) {
+        nctSeen[nct] = true;
+        allStudies.push(studies[k]);
+      }
+    }
+  }
+
+  // Build one fetch per batch — all run in parallel
+  var batchProms = [];
+  for (var bi = 0; bi < batches.length; bi++) {
+    (function(batchQuery, batchIdx) {
+      var p = new URLSearchParams({
+        format:"json", pageSize:"100", countTotal:"true", sort:"LastUpdatePostDate:desc"
+      });
+      p.set("query.term", dateTerm);
+      p.set("query.spons", batchQuery);
+      if (S.cond) p.set("query.cond", S.cond);
+      var url = API + "?" + p.toString();
+
+      if (batchIdx === 0) console.log("[WL] Sample URL: " + url.substring(0, 160) + "...");
+
+      batchProms.push(
+        aFetch(url, ctrl.signal).then(function(data) {
+          var ns = data.studies || [];
+          console.log("[WL] Batch " + batchIdx + ": " + ns.length + " results (total=" + (data.totalCount||0) + ")");
+          addUnique(ns);
+          // If batch has more pages, fetch page 2
+          if (data.nextPageToken) {
+            p.set("pageToken", data.nextPageToken);
+            return aFetch(API + "?" + p.toString(), ctrl.signal).then(function(d2) {
+              console.log("[WL] Batch " + batchIdx + " page 2: " + (d2.studies||[]).length + " results");
+              addUnique(d2.studies || []);
+            });
+          }
+        }).catch(function(e) {
+          if (e.name !== "AbortError") console.warn("[WL] Batch " + batchIdx + " failed:", e.message);
+        })
+      );
+    })(batches[bi], bi);
+  }
+
+  Promise.all(batchProms).then(function() {
+    // Stale response guard
+    if (myGen !== loadGen) { console.log("[WL] Stale response, ignoring"); return; }
+
+    tagWL(allStudies);
     S.studies = allStudies;
-    S.total = totalCount;
     S.wlStudies = filterWL(allStudies);
+    S.total = S.wlStudies.length;
     S.counts.watchlist = S.wlStudies.length;
     S.hm = false;
     S.loading = false;
+    console.log("[WL] Done: " + allStudies.length + " total fetched, " + S.wlStudies.length + " matched watchlist");
 
-    var proms = [];
+    // Fetch counts for other tabs
+    var countProms = [];
     for (var j = 0; j < TABS.length; j++) {
       if (TABS[j].key === "watchlist") continue;
       (function(tb) {
-        var countUrl = bUrl(tb.st, S.cond, S.days, 1, null, null);
-        proms.push(
-          aFetch(countUrl, ctrl.signal)
+        countProms.push(
+          aFetch(bUrl(tb.st, S.cond, S.days, 1, null, null), ctrl.signal)
             .then(function(dd) { S.counts[tb.key] = dd.totalCount || 0; })
             .catch(function() { S.counts[tb.key] = 0; })
         );
       })(TABS[j]);
     }
-    return Promise.all(proms);
+    return Promise.all(countProms);
   }).then(function() {
+    if (myGen !== loadGen) return;
     render();
   }).catch(function(e) {
-    if (e.name !== "AbortError") { S.err = e.message; S.loading = false; render(); }
+    if (e.name !== "AbortError" && myGen === loadGen) {
+      S.err = e.message;
+      S.loading = false;
+      render();
+    }
   });
 }
 
-function load(append, token) {
-  if (S.tab === "watchlist") { loadWatchlist(); return; }
+// ============================================================
+//  DATA LOADING — Standard Tabs (All / Terminated / etc.)
+// ============================================================
 
+function loadStandard(append, token) {
   if (ctrl) ctrl.abort();
   ctrl = new AbortController();
+  loadGen++;
+  var myGen = loadGen;
+
   S.loading = true;
   S.err = null;
-  if (!append) { S.studies = []; S.total = 0; }
+  if (!append) { S.studies = []; S.total = 0; S.counts = {}; }
   render();
 
   var t = null;
   for (var i = 0; i < TABS.length; i++) { if (TABS[i].key === S.tab) { t = TABS[i]; break; } }
   var url = bUrl(t ? t.st : null, S.cond, S.days, 20, token || null, null);
+  console.log("[STD] Loading tab=" + S.tab + " days=" + S.days + " append=" + !!append);
 
   aFetch(url, ctrl.signal).then(function(data) {
+    if (myGen !== loadGen) return;
+
     var ns = data.studies || [];
     tagWL(ns);
     S.studies = append ? S.studies.concat(ns) : ns;
     S.total = data.totalCount || 0;
     S.np = data.nextPageToken || null;
     S.hm = !!data.nextPageToken;
+    console.log("[STD] Got " + ns.length + " studies, total=" + S.total);
 
     if (!append) {
       S.counts[S.tab] = S.total;
+
+      // Fetch counts for other non-watchlist tabs
       var proms = [];
       for (var j = 0; j < TABS.length; j++) {
         if (TABS[j].key === S.tab || TABS[j].key === "watchlist") continue;
@@ -512,21 +577,42 @@ function load(append, token) {
           );
         })(TABS[j]);
       }
-      // Estimate watchlist count from "all" if we're on "all" tab
-      if (S.tab === "all") {
-        S.wlStudies = filterWL(S.studies);
-        S.counts.watchlist = S.wlStudies.length;
-        // Note: this is an undercount since we only have first page
-      }
+
+      // Estimate watchlist count from current page
+      var wlMatches = filterWL(S.studies);
+      S.counts.watchlist = wlMatches.length + "+";
+
       return Promise.all(proms);
     }
   }).then(function() {
+    if (myGen !== loadGen) return;
     S.loading = false;
     render();
   }).catch(function(e) {
-    if (e.name !== "AbortError") { S.err = e.message; S.loading = false; render(); }
+    if (e.name !== "AbortError" && myGen === loadGen) {
+      S.err = e.message;
+      S.loading = false;
+      render();
+    }
   });
 }
+
+// ============================================================
+//  LOAD DISPATCHER
+// ============================================================
+
+function load(append, token) {
+  console.log("[LOAD] tab=" + S.tab + " days=" + S.days + " append=" + !!append);
+  if (S.tab === "watchlist") {
+    loadWatchlist();
+  } else {
+    loadStandard(append, token);
+  }
+}
+
+// ============================================================
+//  NCT LOOKUP
+// ============================================================
 
 function nctLookup(raw) {
   var parts = raw.split(/[,\s|]+/);
@@ -538,6 +624,9 @@ function nctLookup(raw) {
   if (clean.length === 0) { S.err = "Enter valid NCT IDs (e.g. NCT04852770)"; render(); return; }
   if (ctrl) ctrl.abort();
   ctrl = new AbortController();
+  loadGen++;
+  var myGen = loadGen;
+
   S.nctMode = true;
   S.loading = true;
   S.err = null;
@@ -546,6 +635,7 @@ function nctLookup(raw) {
 
   aFetch(bUrl(null, null, 0, 50, null, clean.join(",")), ctrl.signal)
     .then(function(data) {
+      if (myGen !== loadGen) return;
       var ns = data.studies || [];
       tagWL(ns);
       S.studies = ns;
@@ -554,7 +644,11 @@ function nctLookup(raw) {
       S.loading = false;
       render();
     }).catch(function(e) {
-      if (e.name !== "AbortError") { S.err = e.message; S.loading = false; render(); }
+      if (e.name !== "AbortError" && myGen === loadGen) {
+        S.err = e.message;
+        S.loading = false;
+        render();
+      }
     });
 }
 
@@ -562,8 +656,16 @@ function nctLookup(raw) {
 //  EVENT HANDLERS
 // ============================================================
 
-window.ST = function(k) { S.tab = k; load(); };
-window.SD = function(d) { S.days = d; load(); };
+window.ST = function(k) {
+  console.log("[EVENT] Switch tab: " + S.tab + " -> " + k);
+  S.tab = k;
+  load();
+};
+window.SD = function(d) {
+  console.log("[EVENT] Switch days: " + S.days + " -> " + d);
+  S.days = d;
+  load();
+};
 window.CLRC = function() { S.cond = ""; el("condIn").value = ""; load(); };
 window.CLRN = function() { S.nctMode = false; el("nctIn").value = ""; S.tab = "watchlist"; load(); };
 window.RTR = function() { S.nctMode ? nctLookup(el("nctIn").value) : load(); };
