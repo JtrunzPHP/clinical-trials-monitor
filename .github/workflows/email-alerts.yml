@@ -1,39 +1,30 @@
-name: Clinical Trials Email Alerts
+name: Clinical Trials Daily Digest
 
 on:
   schedule:
-    # 6:00 AM ET (EDT = UTC-4, so 10:00 UTC)
-    - cron: '0 10 * * *'
-    # 6:00 PM ET (EDT = UTC-4, so 22:00 UTC)
-    - cron: '0 22 * * *'
-
-  # Manual trigger for testing
+    # 7:00 AM ET (EDT=UTC-4 → 11:00 UTC; will be 8am during EST)
+    - cron: '0 11 * * *'
   workflow_dispatch:
 
-# Need write permission to commit last-sent.json back to the repo
 permissions:
   contents: write
 
 jobs:
   send-report:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - name: Send email report
+      - name: Send daily digest
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          RECIPIENT_EMAILS: ${{ secrets.RECIPIENT_EMAILS }}
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
         run: node send-report.js
-
       - name: Save dedup tracking file
         run: |
           git config user.name "github-actions[bot]"
