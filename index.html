@@ -154,8 +154,9 @@ var SCMAP = {TERMINATED:"#ef4444",WITHDRAWN:"#ef4444",SUSPENDED:"#f59e0b",COMPLE
 // State
 var S = {tab:"watchlist",days:7,cond:"",nctMode:false,studies:[],total:0,counts:{},loading:false,err:null,np:null,hm:false,wlStudies:[]};
 var ctrl = null;
-// Track current load generation to ignore stale responses
 var loadGen = 0;
+// Track which timeframe the watchlist count was computed for
+var wlCountDays = null;
 
 var el = function(id){return document.getElementById(id)};
 var esc = function(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML};
@@ -502,6 +503,7 @@ function loadWatchlist() {
     S.wlStudies = filterWL(allStudies);
     S.total = S.wlStudies.length;
     S.counts.watchlist = S.wlStudies.length;
+    wlCountDays = S.days;
     S.hm = false;
     S.loading = false;
     console.log("[WL] Done: " + allStudies.length + " total fetched, " + S.wlStudies.length + " matched watchlist");
@@ -543,7 +545,13 @@ function loadStandard(append, token) {
 
   S.loading = true;
   S.err = null;
-  if (!append) { S.studies = []; S.total = 0; S.counts = {}; }
+  if (!append) {
+    S.studies = []; S.total = 0;
+    // Preserve watchlist count if it was computed for the same timeframe
+    var savedWlCount = (wlCountDays === S.days) ? S.counts.watchlist : null;
+    S.counts = {};
+    if (savedWlCount != null) S.counts.watchlist = savedWlCount;
+  }
   render();
 
   var t = null;
@@ -577,10 +585,6 @@ function loadStandard(append, token) {
           );
         })(TABS[j]);
       }
-
-      // Estimate watchlist count from current page
-      var wlMatches = filterWL(S.studies);
-      S.counts.watchlist = wlMatches.length + "+";
 
       return Promise.all(proms);
     }
