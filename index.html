@@ -183,6 +183,25 @@ function bUrl(statuses,cond,days,size,token,ids){
   return API+"?"+p.toString();
 }
 
+function buildSponsorQuery(){
+  var terms=[];
+  for(var i=0;i<WATCHLIST.length;i++){
+    for(var j=0;j<WATCHLIST[i].sponsors.length;j++) terms.push(WATCHLIST[i].sponsors[j]);
+  }
+  return terms.join(" OR ");
+}
+
+function bWatchlistUrl(days,cond,size,token){
+  var dt=new Date();dt.setDate(dt.getDate()-Math.max(days,1));
+  var ds=dt.toISOString().split("T")[0];
+  var p=new URLSearchParams({format:"json",pageSize:String(size||100),countTotal:"true",sort:"LastUpdatePostDate:desc"});
+  p.set("query.term","AREA[LastUpdatePostDate]RANGE["+ds+",MAX]");
+  p.set("query.spons",buildSponsorQuery());
+  if(cond)p.set("query.cond",cond);
+  if(token)p.set("pageToken",token);
+  return API+"?"+p.toString();
+}
+
 function aFetch(url,sig){return fetch(url,{signal:sig}).then(function(r){if(!r.ok)throw new Error("API returned "+r.status);return r.json()})}
 
 // ============================================================
@@ -403,7 +422,6 @@ function filterWL(studies) {
 }
 
 function loadWatchlist() {
-  // Fetch broadly (no status filter, large pages) to find watchlist matches
   if (ctrl) ctrl.abort();
   ctrl = new AbortController();
   S.loading = true;
@@ -412,11 +430,11 @@ function loadWatchlist() {
   S.wlStudies = [];
   render();
 
-  var url = bUrl(null, S.cond, S.days, 100, null, null);
+  var url = bWatchlistUrl(S.days, S.cond, 100, null);
   var allStudies = [];
   var totalCount = 0;
   var pages = 0;
-  var maxPages = 5; // Up to 500 studies scanned
+  var maxPages = 5;
 
   function fetchPage(pageUrl) {
     return aFetch(pageUrl, ctrl.signal).then(function(data) {
@@ -425,11 +443,8 @@ function loadWatchlist() {
       allStudies = allStudies.concat(ns);
       tagWL(ns);
       pages++;
-
-      // Keep fetching if more pages and haven't hit limit
       if (data.nextPageToken && pages < maxPages) {
-        var nextUrl = bUrl(null, S.cond, S.days, 100, data.nextPageToken, null);
-        return fetchPage(nextUrl);
+        return fetchPage(bWatchlistUrl(S.days, S.cond, 100, data.nextPageToken));
       }
     });
   }
@@ -442,7 +457,6 @@ function loadWatchlist() {
     S.hm = false;
     S.loading = false;
 
-    // Also fetch counts for other tabs
     var proms = [];
     for (var j = 0; j < TABS.length; j++) {
       if (TABS[j].key === "watchlist") continue;
