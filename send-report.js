@@ -1,6 +1,7 @@
-// send-report.js — Clinical Trials Daily Digest v2
+// send-report.js — Clinical Trials Daily Digest v3
 // Single 7am ET email with watchlist tagging, phase flags, and multi-recipient support.
 // Deduplicates via last-sent.json committed back to repo.
+// v3: Composite dedup key (NCT ID + LastUpdatePostDate) fixes false-zero emails.
 
 const fs = require("fs");
 const path = require("path");
@@ -122,8 +123,23 @@ function matchWatchlist(study) {
 }
 
 // ============================================================
-//  DEDUPLICATION
+//  DEDUPLICATION — v3: composite key = NCT ID + LastUpdatePostDate
+//  This ensures a study updated on a new date is re-sent even if
+//  the NCT ID was already seen on a prior date.
 // ============================================================
+
+function getLastUpdateDate(study) {
+  try {
+    var sm = study.protocolSection.statusModule;
+    return (sm.lastUpdatePostDateStruct && sm.lastUpdatePostDateStruct.date) || "";
+  } catch (e) { return ""; }
+}
+
+function dedupKey(study) {
+  var nct = getNctId(study) || "";
+  var dt = getLastUpdateDate(study);
+  return nct + "|" + dt;
+}
 
 function loadSentData() {
   try {
@@ -134,7 +150,7 @@ function loadSentData() {
       console.log("  Sent data expired (>72h old), starting fresh");
       return { ids: {}, timestamp: 0 };
     }
-    console.log("  Loaded " + Object.keys(data.ids || {}).length + " previously sent NCT IDs");
+    console.log("  Loaded " + Object.keys(data.ids || {}).length + " previously sent dedup keys");
     return data;
   } catch (e) {
     console.log("  No previous sent data found, starting fresh");
@@ -152,7 +168,7 @@ function saveSentData(newIds) {
     if (merged[keys[i]] > cutoff) pruned[keys[i]] = merged[keys[i]];
   }
   fs.writeFileSync(SENT_FILE, JSON.stringify({ ids: pruned, timestamp: Date.now() }, null, 2));
-  console.log("  Saved " + Object.keys(pruned).length + " NCT IDs to last-sent.json");
+  console.log("  Saved " + Object.keys(pruned).length + " dedup keys to last-sent.json");
 }
 
 function getNctId(study) {
@@ -163,8 +179,8 @@ function getNctId(study) {
 function dedup(studies, prev) {
   var fresh = [], dupes = 0;
   for (var i = 0; i < studies.length; i++) {
-    var nct = getNctId(studies[i]);
-    if (nct && prev[nct]) dupes++;
+    var key = dedupKey(studies[i]);
+    if (key && prev[key]) dupes++;
     else fresh.push(studies[i]);
   }
   return { fresh: fresh, dupeCount: dupes };
@@ -218,9 +234,10 @@ async function fetchAll(sinceDate, prev) {
     }
 
     results[cat.key] = { studies: dd.fresh, totalCount: dd.fresh.length };
+    // v3: use composite key for dedup storage
     for (var k = 0; k < dd.fresh.length; k++) {
-      var nct = getNctId(dd.fresh[k]);
-      if (nct) allNewIds[nct] = Date.now();
+      var key = dedupKey(dd.fresh[k]);
+      if (key) allNewIds[key] = Date.now();
     }
   }
 
@@ -459,7 +476,7 @@ function buildEmailHTML(results) {
   // ── Footer ──
   html += '<tr><td style="padding:16px 28px 24px;border-top:1px solid #f3f4f6;">';
   html += '<div style="text-align:center;"><a href="' + DASHBOARD_URL + '" style="display:inline-block;padding:10px 28px;background:#4f46e5;color:#fff;text-decoration:none;border-radius:8px;font-size:13px;font-weight:600;">Open Dashboard</a></div>';
-  html += '<div style="text-align:center;margin-top:12px;font-size:11px;color:#9ca3af;">Source: ClinicalTrials.gov API v2 &middot; Lookback: ' + LOOKBACK_DAYS + ' calendar days w/ dedup &middot; GitHub Actions</div>';
+  html += '<div style="text-align:center;margin-top:12px;font-size:11px;color:#9ca3af;">Source: ClinicalTrials.gov API v2 &middot; Lookback: ' + LOOKBACK_DAYS + ' calendar days w/ composite dedup &middot; GitHub Actions</div>';
   html += '<div style="text-align:center;margin-top:4px;font-size:10px;color:#d1d5db;">Watchlist: ' + WATCHLIST.length + ' companies tracked &middot; Edit in send-report.js</div>';
   html += '</td></tr>';
 
@@ -498,10 +515,11 @@ async function sendEmail(subject, html) {
 // ============================================================
 
 async function main() {
-  console.log("=== Clinical Trials Daily Digest ===");
+  console.log("=== Clinical Trials Daily Digest v3 ===");
   console.log("Time: " + new Date().toISOString());
   console.log("Recipients: " + RECIPIENT_EMAILS.join(", "));
   console.log("Watchlist: " + WATCHLIST.length + " companies");
+  console.log("Dedup: composite key (NCT ID + LastUpdatePostDate)");
   console.log("");
 
   // Dedup
@@ -514,7 +532,7 @@ async function main() {
   var since = new Date(now.getTime() - LOOKBACK_DAYS * 24 * 60 * 60 * 1000);
   var sinceStr = since.toISOString().split("T")[0];
   console.log("Since: " + sinceStr + " (" + LOOKBACK_DAYS + "-day lookback)");
-  console.log("Previously sent: " + Object.keys(prev).length + " NCT IDs");
+  console.log("Previously sent: " + Object.keys(prev).length + " dedup keys");
   console.log("");
 
   // Fetch
