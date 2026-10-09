@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Public Company Clinical Pipelines</title>
+<style>
+  :root { --bg:#f8fafc; --card:#fff; --ink:#111827; --muted:#6b7280; --line:#e5e7eb; --navy:#1e1b4b; --accent:#4f46e5; --amber:#d97706; --red:#b91c1c; --green:#047857; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-size:14px; }
+  header { background:var(--navy); color:#fff; padding:18px 28px; display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+  header h1 { font-size:18px; margin:0; }
+  header .sub { color:#a5b4fc; font-size:12px; }
+  nav { display:flex; gap:6px; margin-left:auto; }
+  nav button { background:transparent; color:#c7d2fe; border:1px solid #3730a3; border-radius:6px; padding:6px 12px; cursor:pointer; font-size:13px; }
+  nav button.on { background:#4f46e5; color:#fff; border-color:#4f46e5; }
+  main { max-width:1280px; margin:0 auto; padding:20px 28px; }
+  .toolbar { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
+  input[type=search], select { padding:7px 10px; border:1px solid var(--line); border-radius:6px; font-size:13px; background:#fff; }
+  .chip { display:inline-block; padding:3px 9px; border-radius:12px; border:1px solid var(--line); background:#fff; font-size:12px; cursor:pointer; margin:2px; }
+  .chip.on { background:var(--navy); color:#fff; border-color:var(--navy); }
+  table { width:100%; border-collapse:collapse; background:var(--card); border-radius:10px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  th { text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.4px; color:var(--muted); padding:10px 12px; border-bottom:1px solid var(--line); cursor:pointer; white-space:nowrap; background:#f9fafb; }
+  td { padding:10px 12px; border-bottom:1px solid #f3f4f6; vertical-align:top; }
+  tr.row:hover { background:#f5f3ff; cursor:pointer; }
+  .tk { display:inline-block; font-family:ui-monospace,Menlo,monospace; font-weight:800; font-size:12px; padding:2px 8px; border-radius:6px; background:#e5e7eb; color:#374151; }
+  .tk.cov { background:var(--navy); color:#a5b4fc; }
+  .pill { display:inline-block; font-size:10px; font-weight:600; padding:2px 7px; border-radius:10px; margin-right:3px; white-space:nowrap; }
+  .muted { color:var(--muted); font-size:12px; }
+  .num { text-align:right; font-variant-numeric:tabular-nums; }
+  .score { font-weight:700; }
+  .card { background:var(--card); border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,.08); padding:16px 18px; margin-bottom:14px; }
+  .stats { display:flex; gap:10px; flex-wrap:wrap; }
+  .stat { background:#f9fafb; border-radius:8px; padding:10px 14px; min-width:110px; text-align:center; }
+  .stat b { display:block; font-size:20px; }
+  .stat span { font-size:10px; color:var(--muted); }
+  .trial { border-left:3px solid var(--line); padding:8px 12px; margin:6px 0; background:#fff; border-radius:0 8px 8px 0; }
+  .trial .t { font-weight:600; }
+  .trial .c { font-size:12px; color:#374151; margin-top:4px; line-height:1.45; }
+  .trial .r { font-size:11px; color:var(--accent); margin-top:3px; }
+  .trial .ch { font-size:11px; color:var(--red); margin-top:3px; }
+  .trial .ch.g { color:var(--green); }
+  a { color:var(--accent); text-decoration:none; }
+  h2 { font-size:15px; margin:18px 0 8px; }
+  .back { display:inline-block; margin-bottom:10px; font-size:13px; }
+  .empty { padding:30px; text-align:center; color:var(--muted); }
+  @media (max-width:720px){ main{padding:12px;} th:nth-child(n+5), td:nth-child(n+5){display:none;} }
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Public Company Clinical Pipelines</h1><div class="sub" id="sub">Loading...</div></div>
+  <nav>
+    <button data-v="companies" class="on">Companies</button>
+    <button data-v="readouts">Readouts (90d)</button>
+    <button data-v="terminations">Terminations (12m)</button>
+    <button data-v="candidates">Unmapped sponsors</button>
+  </nav>
+</header>
+<main id="main"><div class="empty">Loading data...</div></main>
+
+<script>
+(function () {
+  var DATA = "data/pipeline/";
+  var IDX = null, view = "companies", companyCache = {};
+  var STATUS_COLOR = { "Terminated": "#ef4444", "Withdrawn": "#ef4444", "Suspended": "#f59e0b", "Completed": "#22c55e", "Active, not recruiting": "#22c55e", "Enrolling by invitation": "#3b82f6", "Recruiting": "#3b82f6", "Not yet recruiting": "#8b5cf6" };
+  var main = document.getElementById("main");
+
+  function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function num(n) { return n == null ? "n/a" : Number(n).toLocaleString("en-US"); }
+  function mon(s) { if (!s) return "n/a"; var m = /^(\d{4})-(\d{2})/.exec(s); if (!m) return s; return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+m[2]-1] + " " + m[1]; }
+  function tk(t, cov) { return '<span class="tk' + (cov ? ' cov' : '') + '">' + esc(t) + '</span>'; }
+  function pill(text, color) { return '<span class="pill" style="background:' + color + '18;color:' + color + '">' + esc(text) + '</span>'; }
+  function statusPill(label) { return pill(label, STATUS_COLOR[label] || "#6b7280"); }
+  function scoreColor(s) { return s >= 90 ? "#b91c1c" : s >= 65 ? "#d97706" : "#6b7280"; }
+
+  document.querySelectorAll("nav button").forEach(function (b) {
+    b.onclick = function () { document.querySelectorAll("nav button").forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); view = b.dataset.v; location.hash = view; render(); };
+  });
+
+  function render() {
+    if (!IDX) return;
+    if (view === "companies") renderCompanies();
+    else if (view === "readouts") renderReadouts();
+    else if (view === "terminations") renderTerminations();
+    else if (view === "candidates") renderCandidates();
+  }
+
+  // ---------------- Companies ----------------
+  var cSort = { key: "ongoing", dir: -1 }, cFilter = "", cSector = "";
+  function renderCompanies() {
+    var rows = IDX.companies.filter(function (c) {
+      var q = cFilter.toLowerCase();
+      return (!q || c.ticker.toLowerCase().indexOf(q) !== -1 || (c.name || "").toLowerCase().indexOf(q) !== -1) && (!cSector || c.sector === cSector);
+    });
+    rows.sort(function (a, b) { var x = a[cSort.key], y = b[cSort.key]; if (x == null) x = cSort.dir < 0 ? -1 : "zzz"; if (y == null) y = cSort.dir < 0 ? -1 : "zzz"; return (x > y ? 1 : x < y ? -1 : 0) * cSort.dir || a.ticker.localeCompare(b.ticker); });
+    var sectors = {}; IDX.companies.forEach(function (c) { sectors[c.sector] = 1; });
+    var h = '<div class="toolbar"><input type="search" id="cq" placeholder="Search ticker or company" value="' + esc(cFilter) + '">';
+    h += '<select id="cs"><option value="">All sectors</option>' + Object.keys(sectors).sort().map(function (s) { return '<option' + (s === cSector ? ' selected' : '') + '>' + esc(s) + '</option>'; }).join("") + '</select>';
+    h += '<span class="muted">' + rows.length + ' companies, ' + num(IDX.stats.mappedTrials) + ' trials mapped, ' + num(IDX.stats.studiesInScope) + ' industry-led studies scanned</span></div>';
+    h += '<table><thead><tr>' + [["ticker","Ticker"],["name","Company"],["sector","Sector"],["ongoing","Ongoing"],["phase3","Phase 3"],["terminated12m","Term. 12m"],["changedToday","Changed today"],["nextReadout","Next PCD"],["topImportance","Top score"]].map(function (c) { return '<th data-k="' + c[0] + '">' + c[1] + (cSort.key === c[0] ? (cSort.dir < 0 ? ' &#9660;' : ' &#9650;') : '') + '</th>'; }).join("") + '</tr></thead><tbody>';
+    rows.forEach(function (c) {
+      var areas = Object.keys(c.areas || {}).sort(function (a, b) { return c.areas[b] - c.areas[a]; }).slice(0, 3).map(function (a) { return a + " " + c.areas[a]; }).join(", ");
+      h += '<tr class="row" data-t="' + esc(c.ticker) + '"><td>' + tk(c.ticker, c.coverage) + '</td><td>' + esc(c.name) + '<div class="muted">' + esc(areas) + '</div></td><td class="muted">' + esc(c.sector) + '</td>'
+        + '<td class="num">' + num(c.ongoing) + '</td><td class="num">' + num(c.phase3) + '</td><td class="num" style="color:' + (c.terminated12m ? '#b91c1c' : 'inherit') + '">' + num(c.terminated12m) + '</td><td class="num">' + num(c.changedToday) + '</td><td>' + mon(c.nextReadout) + '</td><td class="num score" style="color:' + scoreColor(c.topImportance) + '">' + c.topImportance + '</td></tr>';
+    });
+    h += '</tbody></table>';
+    main.innerHTML = h;
+    document.getElementById("cq").oninput = function (e) { cFilter = e.target.value; renderCompanies(); document.getElementById("cq").focus(); var el = document.getElementById("cq"); el.setSelectionRange(el.value.length, el.value.length); };
+    document.getElementById("cs").onchange = function (e) { cSector = e.target.value; renderCompanies(); };
+    main.querySelectorAll("th").forEach(function (th) { th.onclick = function () { var k = th.dataset.k; if (cSort.key === k) cSort.dir *= -1; else { cSort.key = k; cSort.dir = (k === "ticker" || k === "name" || k === "sector" || k === "nextReadout") ? 1 : -1; } renderCompanies(); }; });
+    main.querySelectorAll("tr.row").forEach(function (tr) { tr.onclick = function () { openCompany(tr.dataset.t); }; });
+  }
+
+  // ---------------- Company detail ----------------
+  var dArea = "", dPhase = "", dStatus = "ongoing", dSort = "importance";
+  function openCompany(ticker) {
+    location.hash = "c/" + ticker;
+    if (companyCache[ticker]) return renderCompany(companyCache[ticker]);
+    main.innerHTML = '<div class="empty">Loading ' + esc(ticker) + '...</div>';
+    fetch(DATA + "tickers/" + ticker + ".json").then(function (r) { return r.json(); }).then(function (d) { companyCache[ticker] = d; renderCompany(d); }).catch(function () { main.innerHTML = '<div class="empty">Could not load ' + esc(ticker) + '</div>'; });
+  }
+  function isOngoing(r) { return /RECRUITING|ACTIVE_NOT_RECRUITING|ENROLLING_BY_INVITATION/.test(r.status); }
+  function renderCompany(d) {
+    var meta = IDX.companies.filter(function (c) { return c.ticker === d.ticker; })[0] || {};
+    var all = d.trials;
+    var areas = {}; all.forEach(function (r) { areas[r.area] = (areas[r.area] || 0) + 1; });
+    var rows = all.filter(function (r) {
+      if (dStatus === "ongoing" && !isOngoing(r)) return false;
+      if (dStatus === "closed" && isOngoing(r)) return false;
+      if (dStatus === "terminated" && !/TERMINATED|SUSPENDED|WITHDRAWN/.test(r.status)) return false;
+      if (dArea && r.area !== dArea) return false;
+      if (dPhase === "3" && !/PHASE3/.test(r.phaseKey)) return false;
+      if (dPhase === "2" && !/PHASE2/.test(r.phaseKey)) return false;
+      if (dPhase === "1" && !/PHASE1/.test(r.phaseKey)) return false;
+      if (dPhase === "na" && r.phaseKey !== "NA") return false;
+      return true;
+    });
+    if (dSort === "pcd") rows.sort(function (a, b) { return (a.pcd || "9999").localeCompare(b.pcd || "9999"); });
+    else if (dSort === "changed") rows.sort(function (a, b) { return ((b.changes[0] || {}).date || "").localeCompare((a.changes[0] || {}).date || "") || b.importance - a.importance; });
+    else rows.sort(function (a, b) { return b.importance - a.importance; });
+
+    var h = '<a class="back" href="#" id="back">&larr; All companies</a>';
+    h += '<div class="card"><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">' + tk(d.ticker, meta.coverage) + '<b style="font-size:16px">' + esc(meta.name) + '</b><span class="muted">' + esc(meta.sector) + '</span></div>';
+    if (meta.context) h += '<div class="muted" style="margin-top:4px;color:#4f46e5;font-style:italic">' + esc(meta.context) + '</div>';
+    h += '<div class="stats" style="margin-top:12px">' + [[meta.ongoing, "Ongoing"], [meta.phase3, "Phase 3 ongoing"], [meta.terminated12m, "Terminated 12m"], [meta.changedToday, "Changed today"], [mon(meta.nextReadout), "Next primary completion"]].map(function (s) { return '<div class="stat"><b>' + s[0] + '</b><span>' + s[1] + '</span></div>'; }).join("") + '</div>';
+    h += '<div class="muted" style="margin-top:10px">Data generated ' + esc(d.generated.substring(0, 16).replace("T", " ")) + ' UTC from ClinicalTrials.gov. Importance scores weight phase, design, enrollment, nearness of primary completion and the trial\'s share of this company\'s pipeline.</div></div>';
+
+    h += '<div class="toolbar">';
+    h += '<select id="ds"><option value="ongoing"' + (dStatus === "ongoing" ? " selected" : "") + '>Ongoing</option><option value="closed"' + (dStatus === "closed" ? " selected" : "") + '>Completed / closed (12m)</option><option value="terminated"' + (dStatus === "terminated" ? " selected" : "") + '>Terminated / suspended</option><option value="all"' + (dStatus === "all" ? " selected" : "") + '>All</option></select>';
+    h += '<select id="dp"><option value="">All phases</option><option value="3"' + (dPhase === "3" ? " selected" : "") + '>Phase 3</option><option value="2"' + (dPhase === "2" ? " selected" : "") + '>Phase 2</option><option value="1"' + (dPhase === "1" ? " selected" : "") + '>Phase 1</option><option value="na"' + (dPhase === "na" ? " selected" : "") + '>N/A (device etc.)</option></select>';
+    h += '<select id="dso"><option value="importance"' + (dSort === "importance" ? " selected" : "") + '>Sort: importance</option><option value="pcd"' + (dSort === "pcd" ? " selected" : "") + '>Sort: primary completion</option><option value="changed"' + (dSort === "changed" ? " selected" : "") + '>Sort: recently changed</option></select>';
+    h += '<span class="muted">' + rows.length + ' of ' + all.length + ' trials</span></div>';
+    h += '<div style="margin-bottom:10px"><span class="chip' + (dArea === "" ? " on" : "") + '" data-a="">All areas</span>' + Object.keys(areas).sort(function (a, b) { return areas[b] - areas[a]; }).map(function (a) { return '<span class="chip' + (dArea === a ? " on" : "") + '" data-a="' + esc(a) + '">' + esc(a) + ' <span class="muted">' + areas[a] + '</span></span>'; }).join("") + '</div>';
+
+    if (!rows.length) h += '<div class="empty">No trials match these filters.</div>';
+    var lastArea = null;
+    rows.forEach(function (r) {
+      if (dSort === "importance" && !dArea && r.area !== lastArea) { h += '<h2>' + esc(r.area) + '</h2>'; lastArea = r.area; }
+      h += trialCard(r);
+    });
+    main.innerHTML = h;
+    document.getElementById("back").onclick = function (e) { e.preventDefault(); location.hash = "companies"; view = "companies"; render(); };
+    document.getElementById("ds").onchange = function (e) { dStatus = e.target.value; renderCompany(d); };
+    document.getElementById("dp").onchange = function (e) { dPhase = e.target.value; renderCompany(d); };
+    document.getElementById("dso").onchange = function (e) { dSort = e.target.value; renderCompany(d); };
+    main.querySelectorAll(".chip").forEach(function (c) { c.onclick = function () { dArea = c.dataset.a; renderCompany(d); }; });
+  }
+  function trialCard(r) {
+    var color = STATUS_COLOR[r.statusLabel] || "#6b7280";
+    var h = '<div class="trial" style="border-left-color:' + color + '">';
+    h += '<div><a href="https://clinicaltrials.gov/study/' + esc(r.nct) + '" target="_blank" rel="noopener" style="font-family:ui-monospace,Menlo,monospace;font-weight:700">' + esc(r.nct) + '</a> ' + statusPill(r.statusLabel) + (r.phase ? pill(r.phase, "#6b7280") : "") + (r.themes && r.themes.length ? pill(r.themes[0], "#7c3aed") : "") + '<span class="score" style="float:right;color:' + scoreColor(r.importance) + '">' + r.importance + '</span></div>';
+    h += '<div class="t">' + esc(r.title) + '</div>';
+    h += '<div class="muted">' + esc((r.interventions || []).slice(0, 3).join(", ")) + (r.conditions && r.conditions.length ? ' &middot; ' + esc(r.conditions.slice(0, 3).join(", ")) : '') + '</div>';
+    if (r.commentary) h += '<div class="c">' + esc(r.commentary) + '</div>';
+    if (r.reasons && r.reasons.length) h += '<div class="r">Why it scores ' + r.importance + ': ' + esc(r.reasons.join("; ")) + '</div>';
+    (r.changes || []).slice(0, 5).forEach(function (c) { h += '<div class="ch' + (/Results posted|pulled in/.test(c.text) ? ' g' : '') + '">' + esc(c.date) + ': ' + esc(c.text) + '</div>'; });
+    if (r.changes && r.changes.length > 5) h += '<div class="muted">+ ' + (r.changes.length - 5) + ' earlier changes</div>';
+    h += '<div class="muted" style="margin-top:3px">Tracked since ' + esc(r.tracked ? r.tracked.since : "") + (r.original && r.original.pcd ? ' &middot; original record ' + esc(mon(r.original.date || "")) + ': primary completion ' + esc(mon(r.original.pcd)) + (r.original.enroll ? ', ' + num(r.original.enroll) + ' planned' : '') : '') + ' &middot; last CT.gov update ' + esc(r.lastUpdate || "") + '</div>';
+    h += '</div>';
+    return h;
+  }
+
+  // ---------------- Readouts ----------------
+  function renderReadouts() {
+    var rows = IDX.readouts;
+    var h = '<div class="card"><b>Phase 2/3 trials with primary completion in the next 90 days</b><div class="muted">Sorted by primary completion date, then importance. Dates are sponsor estimates and often slip; results typically post months after primary completion.</div></div>';
+    h += '<table><thead><tr><th>Primary completion</th><th>Ticker</th><th>Trial</th><th>Phase</th><th>Status</th><th class="num">Patients</th><th>Area</th><th class="num">Score</th></tr></thead><tbody>';
+    rows.forEach(function (r) {
+      h += '<tr class="row" data-t="' + esc(r.ticker) + '"><td><b>' + mon(r.pcd) + '</b></td><td>' + tk(r.ticker, r.coverage) + '</td><td><a href="https://clinicaltrials.gov/study/' + esc(r.nct) + '" target="_blank" rel="noopener">' + esc(r.nct) + '</a> ' + esc(r.title) + '<div class="muted">' + esc(r.intervention) + '</div></td><td>' + esc(r.phase) + '</td><td>' + statusPill(r.status) + '</td><td class="num">' + num(r.enroll) + '</td><td class="muted">' + esc(r.area) + '</td><td class="num score" style="color:' + scoreColor(r.importance) + '">' + r.importance + '</td></tr>';
+    });
+    h += '</tbody></table>';
+    if (!rows.length) h += '<div class="empty">Nothing in the window.</div>';
+    main.innerHTML = h;
+    main.querySelectorAll("tr.row").forEach(function (tr) { tr.onclick = function (e) { if (e.target.tagName !== "A") openCompany(tr.dataset.t); }; });
+  }
+
+  // ---------------- Terminations ----------------
+  function renderTerminations() {
+    var rows = IDX.terminations;
+    var h = '<div class="card"><b>Terminated, suspended and withdrawn trials, last 12 months</b><div class="muted">Most recent CT.gov update first. "Why stopped" is the sponsor\'s own wording.</div></div>';
+    h += '<table><thead><tr><th>Updated</th><th>Ticker</th><th>Trial</th><th>Phase</th><th>Status</th><th>Why stopped</th><th class="num">Patients</th><th class="num">Score</th></tr></thead><tbody>';
+    rows.forEach(function (r) {
+      h += '<tr class="row" data-t="' + esc(r.ticker) + '"><td>' + esc(r.lastUpdate) + '</td><td>' + tk(r.ticker, r.coverage) + '</td><td><a href="https://clinicaltrials.gov/study/' + esc(r.nct) + '" target="_blank" rel="noopener">' + esc(r.nct) + '</a> ' + esc(r.title) + '<div class="muted">' + esc(r.area) + '</div></td><td>' + esc(r.phase) + '</td><td>' + statusPill(r.status) + '</td><td style="color:#b91c1c;font-size:12px">' + esc(r.why) + '</td><td class="num">' + num(r.enroll) + '</td><td class="num score" style="color:' + scoreColor(r.importance) + '">' + r.importance + '</td></tr>';
+    });
+    h += '</tbody></table>';
+    main.innerHTML = h;
+    main.querySelectorAll("tr.row").forEach(function (tr) { tr.onclick = function (e) { if (e.target.tagName !== "A") openCompany(tr.dataset.t); }; });
+  }
+
+  // ---------------- Candidates ----------------
+  function renderCandidates() {
+    var h = '<div class="card"><b>Industry lead sponsors with no ticker mapping</b><div class="muted">Top 300 by ongoing trial count. Add the public ones to PUBLIC_SPONSORS in tickers.js; mark private ones with ticker PRIVATE. The full list is in <a href="data/pipeline/candidates.csv">candidates.csv</a>.</div></div>';
+    h += '<table><thead><tr><th>Sponsor</th><th class="num">Ongoing</th><th class="num">Phase 3</th><th class="num">Total in scope</th></tr></thead><tbody>';
+    IDX.candidates.forEach(function (c) { h += '<tr><td>' + esc(c.name) + '</td><td class="num">' + num(c.ongoing) + '</td><td class="num">' + num(c.p3) + '</td><td class="num">' + num(c.total) + '</td></tr>'; });
+    h += '</tbody></table>';
+    main.innerHTML = h;
+  }
+
+  // ---------------- Boot ----------------
+  fetch(DATA + "index.json").then(function (r) { return r.json(); }).then(function (d) {
+    IDX = d;
+    document.getElementById("sub").textContent = num(d.stats.mappedCompanies) + " companies, " + num(d.stats.mappedTrials) + " trials, updated " + d.generated.substring(0, 10);
+    var hsh = (location.hash || "").replace("#", "");
+    if (hsh.indexOf("c/") === 0) openCompany(hsh.substring(2));
+    else { if (["companies", "readouts", "terminations", "candidates"].indexOf(hsh) !== -1) { view = hsh; document.querySelectorAll("nav button").forEach(function (b) { b.classList.toggle("on", b.dataset.v === view); }); } render(); }
+  }).catch(function () { main.innerHTML = '<div class="empty">No data yet. Run the "Build Pipeline Site Data" workflow in GitHub Actions, then refresh.</div>'; });
+  window.addEventListener("hashchange", function () {
+    var hsh = (location.hash || "").replace("#", "");
+    if (hsh.indexOf("c/") === 0) openCompany(hsh.substring(2));
+    else if (["companies", "readouts", "terminations", "candidates"].indexOf(hsh) !== -1 && hsh !== view) { view = hsh; document.querySelectorAll("nav button").forEach(function (b) { b.classList.toggle("on", b.dataset.v === view); }); render(); }
+  });
+})();
+</script>
+</body>
+</html>
