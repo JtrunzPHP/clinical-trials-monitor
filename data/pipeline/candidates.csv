@@ -22,7 +22,7 @@ Beijing Biotech,32,0,32
 "Fujian Shengdi Pharmaceutical Co., Ltd.",31,11,43
 Aesculap AG,29,0,36
 Daewoong Pharmaceutical Co. LTD.,29,10,35
-Medacta International SA,29,0,32
+Medacta International SA,29,0,31
 Shanghai JMT-Bio Inc.,29,15,30
 "RemeGen Co., Ltd.",28,13,38
 Sinocelltech Ltd.,28,10,29
@@ -79,7 +79,7 @@ Philogen S.p.A.,15,2,18
 MicroPort Orthopedics Inc.,15,0,15
 Miltenyi Biomedicine GmbH,15,0,15
 Colgate Palmolive,14,33,45
-Alcon Research,14,8,37
+Alcon Research,14,8,36
 "Sunshine Lake Pharma Co., Ltd.",14,5,27
 CanSino Biologics Inc.,14,8,20
 EMS,14,19,20
@@ -98,7 +98,7 @@ Limacorporate S.p.a,13,0,16
 "Allist Pharmaceuticals, Inc.",13,6,14
 "Genoss Co., Ltd.",13,0,13
 LaNova Medicines Limited,13,1,13
-Arrowhead Pharmaceuticals,12,8,46
+Arrowhead Pharmaceuticals,12,8,45
 Chong Kun Dang Pharmaceutical,12,2,23
 "Intra-Cellular Therapies, Inc.",12,13,23
 "Jiangsu vcare pharmaceutical technology co., LTD",12,5,17
@@ -2486,12 +2486,10 @@ SIFI SpA,1,0,4
 Sinomed Neurovita Technology Inc.,1,0,4
 "Skingenix, Inc.",1,0,4
 "Spectrum Pharmaceuticals, Inc",1,1,4
-Spruce Biosciences,1,1,4
 "Tonghua Dongbao Pharmaceutical Co.,Ltd",1,2,4
 Vaxart,1,0,4
 Xemed LLC,1,0,4
 "Abcuro, Inc.",1,2,3
-"Advantage Silver Dental Arrest, LLC",1,0,3
 Amryt Pharma,1,1,3
 Amway (China) R&D Center,1,0,3
 Apyx Medical,1,0,3
@@ -2565,6 +2563,7 @@ Siloam Vision,1,0,3
 "SkinJect, Inc.",1,0,3
 SOTIO Biotech AG,1,0,3
 SPH-BIOCAD (HK) Limited,1,2,3
+Spruce Biosciences,1,1,3
 Suzhou Ribo Life Science Co. Ltd.,1,0,3
 SymBio Pharmaceuticals,1,1,3
 "SynerGene Therapeutics, Inc.",1,0,3
@@ -2596,6 +2595,7 @@ Acesion Pharma,1,0,2
 Acta Pharmaceuticals,1,0,2
 Activ'inside,1,0,2
 Advanced Bionics,1,0,2
+"Advantage Silver Dental Arrest, LLC",1,0,2
 AiCuris Anti-infective Cures AG,1,1,2
 AION Biosystems,1,0,2
 Akamis Bio,1,0,2
@@ -2818,7 +2818,6 @@ nCap Medical,1,0,2
 NervGen Pharma,1,1,2
 "Neuracle Medical Technology(Shanghai) Co.,Ltd.",1,0,2
 NeuraLight,1,0,2
-neurescue,1,0,2
 Neuron23 Inc.,1,0,2
 "NeuroTrauma Sciences, LLC",1,0,2
 "Neuvosyn Laboratories, LLC",1,1,2
@@ -4639,6 +4638,7 @@ Neurala Biosciences,1,0,1
 Neuramedy Co. Ltd.,1,0,1
 Neuraptive Therapeutics Inc.,1,1,1
 "Neuregen Therapeutics Co., Ltd.",1,0,1
+neurescue,1,0,1
 Neurimmune AG,1,0,1
 "Neuro-Eye Diagnostic Systems, LLC",1,0,1
 NeuroAEye LLC,1,0,1
@@ -5768,9 +5768,9 @@ Heron Therapeutics,0,6,18
 ADIUM,0,0,12
 "Biosplice Therapeutics, Inc.",0,6,12
 "Cellontech Co., Ltd.",0,1,11
-Humanis Saglık Anonim Sirketi,0,0,11
 Nakhia Impex LLC,0,0,11
 Vidacare Corporation,0,0,11
+Humanis Saglık Anonim Sirketi,0,0,10
 "Sarfez Pharmaceuticals, Inc.",0,4,9
 HighTide Therapeutics (Hong Kong) Limited,0,0,8
 Jennerex Biotherapeutics,0,0,8
@@ -5790,7 +5790,6 @@ Alector Inc.,0,2,5
 Denovo Biopharma LLC,0,2,5
 EpiEndo Pharmaceuticals,0,0,5
 "Haisco-USA Pharmaceuticals, Inc.",0,3,5
-"Helixmith Co., Ltd.",0,5,5
 Indivior Inc.,0,0,5
 "Inmune Bio, Inc.",0,1,5
 Intercept Pharmaceuticals,0,2,5
@@ -6019,7 +6018,6 @@ SmileDent Kft.,0,0,2
 "Sol-Gel Technologies, Ltd.",0,1,2
 "Solstice Neurosciences, LLC, a subsidiary of MDD US Operations, LLC",0,2,2
 Sonic Incytes,0,0,2
-Spero Therapeutics,0,1,2
 SpinChip Diagnostics ASA,0,0,2
 Stayble Therapeutics,0,0,2
 "SwanBio Therapeutics, Inc.",0,0,2
@@ -6027,7 +6025,6 @@ Stayble Therapeutics,0,0,2
 Taisho Pharmaceutical Indonesia,0,2,2
 Taiwan Bio Therapeutics Inc.,0,0,2
 Vanarix SA,0,0,2
-"Vascular Therapies, Inc.",0,2,2
 Verge Genomics,0,0,2
 "Visara, Inc.",0,0,2
 "Visen Pharmaceuticals (Shanghai) Co., Ltd.",0,1,2
@@ -6425,7 +6422,6 @@ Labrha,0,0,1
 Lady Technologies Inc,0,0,1
 Larena SAS,0,0,1
 Lassen Therapeutics Inc.,0,0,1
-"Leap Therapeutics, Inc.",0,0,1
 Leberstiftungs-GmbH Deutschland,0,0,1
 Levicept,0,0,1
 Lexaria Bioscience Corp.,0,0,1
@@ -6696,6 +6692,7 @@ Società Generale delle Acque Minerali S.p.A.,0,0,1
 Soranus ArGe ve Danismanlik Hizmetleri Sanayi Ticaret A.S.,0,0,1
 Sorridi Therapeutics,0,0,1
 "South Rampart Pharma, Inc.",0,0,1
+Spero Therapeutics,0,1,1
 "ST Pharm Co., Ltd.",0,0,1
 Stallergenes Greer,0,1,1
 Stan Kachnowski,0,0,1
@@ -6764,6 +6761,7 @@ Urigen,0,0,1
 "USWM, LLC (dba US WorldMeds)",0,0,1
 UVISA Health ApS,0,0,1
 VANDRIA,0,0,1
+"Vascular Therapies, Inc.",0,1,1
 Vaxxas Pty Ltd,0,0,1
 Veralox Therapeutics,0,0,1
 Verigraft AB,0,0,1
