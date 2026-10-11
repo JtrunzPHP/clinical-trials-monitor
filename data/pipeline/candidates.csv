@@ -64,7 +64,7 @@ iOMEDICO AG,17,0,22
 "Jiangsu Alphamab Biopharmaceuticals Co., Ltd",17,4,18
 Minghui Pharmaceutical (Hangzhou) Ltd,17,7,18
 Radicle Science,16,0,38
-Galderma R&D,16,6,36
+Galderma R&D,16,6,35
 "Agios Pharmaceuticals, Inc.",16,10,20
 Hamad Medical Corporation,16,0,20
 Shanghai Juncell Therapeutics,16,0,19
@@ -547,12 +547,12 @@ Pierre Fabre Dermo Cosmetique,4,0,15
 Dompé Farmaceutici S.p.A,4,5,12
 Abivax S.A.,4,4,11
 Actelion,4,6,11
-"Opus Genetics, Inc",4,5,11
 "Sclnow Biotechnology Co., Ltd.",4,0,11
 "AJU Pharm Co., Ltd.",4,1,10
 Aurigene Discovery Technologies Limited,4,0,10
 Endologix,4,0,10
 i+Med S.Coop.,4,0,10
+"Opus Genetics, Inc",4,5,10
 Koite Health Oy,4,0,9
 "Nanjing Immunophage Biotech Co., Ltd",4,0,9
 "Viridian Therapeutics, Inc.",4,8,9
@@ -824,7 +824,6 @@ BackBeat Medical Inc,3,0,10
 Alumis Inc,3,3,9
 AO GENERIUM,3,4,9
 ProofPilot,3,0,9
-Trevi Therapeutics,3,2,9
 "Ascletis Pharma (China) Co., Limited",3,2,8
 BioCryst Pharmaceuticals,3,5,8
 Bonafide Health,3,0,8
@@ -834,6 +833,7 @@ Fidia Farmaceutici s.p.a.,3,1,8
 Implicit Bioscience,3,0,8
 Med-El Corporation,3,0,8
 MedtronicNeuro,3,0,8
+Trevi Therapeutics,3,2,8
 Adagio Medical,3,0,7
 Agenus Inc.,3,0,7
 Ascendis Pharma Endocrinology Division A/S,3,4,7
@@ -945,7 +945,6 @@ Energenx Medical LTD.,3,0,4
 Enveda Therapeutics,3,0,4
 "ESM Technologies, LLC",3,0,4
 ExThera Medical Corporation,3,0,4
-FluidAI Medical,3,1,4
 Francis Medical Inc.,3,0,4
 "Fujifilm Pharmaceuticals U.S.A., Inc.",3,0,4
 Fusion Pharmaceuticals Inc.,3,0,4
@@ -1120,6 +1119,7 @@ EverEx Inc.,3,0,3
 "Exscientia AI Ltd., a wholly owned subsidiary of Recursion Pharmaceuticals, Inc.",3,0,3
 FA Corporation,3,0,3
 Firalis SA,3,0,3
+FluidAI Medical,3,1,3
 "Forward Pharmaceuticals Co., Ltd.",3,0,3
 "Foundry Innovation & Research 1, Limited (FIRE1)",3,0,3
 FrieslandCampina,3,1,3
@@ -1357,7 +1357,6 @@ Aligos Therapeutics,2,0,7
 Applied Science & Performance Institute,2,0,7
 DJO UK Ltd,2,0,7
 Fenix Innovation Group,2,3,7
-Guerbet,2,4,7
 IVIEW Therapeutics Inc.,2,0,7
 Kenvue Brands LLC,2,0,7
 Laboratorios Silanes S.A. de C.V.,2,5,7
@@ -1369,6 +1368,7 @@ Ceragem Clinical Inc.,2,0,6
 Cinclus Pharma Holding AB,2,2,6
 "Danone Asia Pacific Holdings Pte, Ltd.",2,0,6
 Danone Global Research & Innovation Center,2,0,6
+Guerbet,2,4,6
 "Koya Medical, Inc.",2,0,6
 LimmaTech Biologics AG,2,0,6
 PureTech,2,1,6
@@ -1543,7 +1543,6 @@ Faeth Therapeutics,2,0,3
 Field Medical,2,0,3
 "Foresee Pharmaceuticals Co., Ltd.",2,1,3
 Galimedix Therapeutics Inc,2,0,3
-GC Cell Corporation,2,2,3
 GCP-Service International West GmbH,2,0,3
 Gemma Biotherapeutics,2,0,3
 Genelux Corporation,2,1,3
@@ -1925,6 +1924,7 @@ FX Solutions,2,0,2
 Galaxy Therapeutics INC,2,1,2
 Galvani Bioelectronics,2,0,2
 "Galvanize Therapeutics, Inc.",2,0,2
+GC Cell Corporation,2,1,2
 Gedeon Richter Plc.,2,1,2
 Gelscom SAS,2,1,2
 Genascence Corporation,2,1,2
@@ -2533,7 +2533,6 @@ Integro Theranostics,1,0,3
 "Kowa Company, Ltd.",1,2,3
 Lesaffre International,1,0,3
 Levita Magnetics,1,0,3
-Lexicon Pharmaceuticals,1,1,3
 "LumiThera, Inc.",1,0,3
 "MedRhythms, Inc.",1,0,3
 Mezzion Pharma Co. Ltd,1,3,3
@@ -2678,7 +2677,6 @@ Clene Nanomedicine,1,0,2
 Codex Labs Corporation,1,0,2
 "Cofactor Genomics, Inc.",1,0,2
 Cognition Therapeutics,1,0,2
-Cognitive FX,1,0,2
 "Contego Medical, Inc.",1,0,2
 Contineum Therapeutics,1,0,2
 Contura,1,0,2
@@ -2695,7 +2693,6 @@ Deepsonbio,1,0,2
 Deka Research and Development,1,0,2
 Delfi Diagnostics Inc.,1,0,2
 "Delta-Fly Pharma, Inc.",1,1,2
-DePuy International,1,0,2
 Designs for Health,1,0,2
 Diamyd Medical AB,1,1,2
 DigitalRehab,1,0,2
@@ -2780,6 +2777,7 @@ Koelis,1,0,2
 "Korro Bio, Inc.",1,0,2
 Laminate Medical Technologies,1,0,2
 "Leuko Labs, Inc.",1,0,2
+Lexicon Pharmaceuticals,1,1,2
 Liberate Medical,1,0,2
 Limbic Limited,1,0,2
 "Linshom Medical, Inc.",1,0,2
@@ -3591,6 +3589,7 @@ CNSystems Medizintechnik GmbH,1,0,1
 CoapTech,1,0,1
 CognifiSense Inc.,1,0,1
 Cognita Labs LLC,1,0,1
+Cognitive FX,1,0,1
 Coherence Neuro Australia Pty Limited,1,0,1
 Cohesys Inc.,1,0,1
 CoLabs Medical,1,0,1
@@ -3690,6 +3689,7 @@ Demaod Ltd,1,0,1
 DemaxGroup,1,0,1
 Dendreon,1,0,1
 Dendrogenix,1,0,1
+DePuy International,1,0,1
 "DermaSensor, Inc.",1,0,1
 "DermBiont, Inc.",1,0,1
 "Dermed Diagnostics, Inc.",1,0,1
@@ -5789,7 +5789,6 @@ Alector Inc.,0,2,5
 "CalciMedica, Inc.",0,0,5
 Denovo Biopharma LLC,0,2,5
 EpiEndo Pharmaceuticals,0,0,5
-"Haisco-USA Pharmaceuticals, Inc.",0,3,5
 Indivior Inc.,0,0,5
 "Inmune Bio, Inc.",0,1,5
 Intercept Pharmaceuticals,0,2,5
@@ -5947,6 +5946,7 @@ Gilgamesh Pharmaceuticals,0,0,2
 Grape King Bio Ltd.,0,0,2
 "Guangzhou Chia Tai Innovative Pharmaceutical Co., Ltd.",0,0,2
 "GUAYAKI SUSTAINABLE RAINFOREST PRODUCTS, INC.",0,0,2
+"Haisco-USA Pharmaceuticals, Inc.",0,0,2
 "Hanpoong Nature Pharm Co., Ltd.",0,0,2
 Healios K.K.,0,2,2
 HearX SA,0,0,2
@@ -6361,7 +6361,6 @@ Indivi AG,0,0,1
 INFINITT Healthcare,0,0,1
 Inflammatix,0,0,1
 Inflammx Therapeutics Inc,0,0,1
-InFlectis BioScience,0,0,1
 "InfraScan, Inc.",0,0,1
 Ingenion Medical Limited,0,0,1
 "Inhale, Inc",0,0,1
