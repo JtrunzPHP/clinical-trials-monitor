@@ -6,6 +6,7 @@ on:
 jobs:
   probe:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -13,5 +14,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Install headless Chrome
+        run: npm install puppeteer@23.11.1 --no-save
       - name: Probe history endpoint
         run: node probe-history.js
