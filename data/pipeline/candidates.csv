@@ -501,7 +501,6 @@ Fusion Pharmaceuticals Inc.,3,0,4
 "Hangzhou Yirui Pharmaceutical Technology Co., Ltd",3,0,4
 Heartfelt Technologies,3,0,4
 "Hinge Health, Inc",3,0,4
-Hummingbird Bioscience,3,0,4
 "Imbioray (Hangzhou) Biomedicine Co., Ltd.",3,0,4
 "Immorna Biotherapeutics, Inc.",3,0,4
 ImmuneOncia Therapeutics Inc.,3,0,4
@@ -689,6 +688,7 @@ Helmholtz Zentrum München,3,0,3
 "HepQuant, LLC",3,0,3
 Heronova Pharmaceuticals,3,0,3
 "Huabo Biopharm Co., Ltd.",3,0,3
+Hummingbird Bioscience,3,0,3
 "Hyalex Orthopaedics, Inc.",3,0,3
 ICIM International S.r.l.,3,0,3
 Ikaria Bioscience Pty Ltd,3,0,3
@@ -989,13 +989,11 @@ NeuroPace,2,0,4
 "NextCure, Inc.",2,0,4
 "NiKang Therapeutics, Inc.",2,0,4
 Nucleix Ltd.,2,0,4
-Organogenesis,2,2,4
 Persephone Biosciences,2,0,4
 "Portal Therapeutics, Inc.",2,1,4
 ReCode Therapeutics,2,0,4
 "ReFlow Medical, Inc.",2,0,4
 "Relmada Therapeutics, Inc.",2,3,4
-Restor3D,2,0,4
 Reunion Neuroscience Inc,2,0,4
 Rovi Pharmaceuticals Laboratories,2,1,4
 SCF Pharma,2,0,4
@@ -1126,6 +1124,7 @@ Noema Pharma AG,2,1,3
 NPO Petrovax,2,1,3
 Op-T LLC,2,0,3
 "OPKO Health, Inc.",2,0,3
+Organogenesis,2,1,3
 OSE Immunotherapeutics,2,1,3
 Ostia Sciences,2,0,3
 "Oui Therapeutics, Inc.",2,0,3
@@ -1143,6 +1142,7 @@ Procter and Gamble,2,0,3
 "Regeneration Biomedical, Inc.",2,0,3
 "Renibus Therapeutics, Inc.",2,1,3
 "Reprieve Cardiovascular, Inc",2,0,3
+Restor3D,2,0,3
 Rethink Medical SL,2,0,3
 "Rigerna Therapeutics Co., Ltd.; Rigerna Therapeutics (Beijing) Co., Ltd.",2,0,3
 "Rigicon, Inc.",2,0,3
@@ -1950,7 +1950,6 @@ Latigo Biotherapeutics,1,0,5
 Neurent Medical,1,0,5
 Pharmasoft,1,1,5
 PhytoHealth Corporation,1,1,5
-Prelude Therapeutics Incorporated,1,0,5
 "Aclaris Therapeutics, Inc.",1,0,4
 "Adhera Health, Inc.",1,0,4
 Alzheon Inc.,1,2,4
@@ -1983,6 +1982,7 @@ Nordic Biotic Sp. z o.o.,1,0,4
 "Outlook Therapeutics, Inc.",1,4,4
 Pi-cardia,1,0,4
 "Pliant Therapeutics, Inc.",1,0,4
+Prelude Therapeutics Incorporated,1,0,4
 "Raydiant Oximetry, Inc.",1,0,4
 Reckitt Benckiser Healthcare (UK) Limited,1,0,4
 SafeHeal Inc,1,0,4
@@ -2391,7 +2391,6 @@ Seeding Inc,1,0,2
 Seppic,1,0,2
 "Septerna, Inc.",1,0,2
 "Seqker Biosciences, Inc.",1,0,2
-Seraxis,1,0,2
 "Shandong Branden Med.Device Co.,Ltd",1,0,2
 "Shanghai Weihe Medical Laboratory Co., Ltd.",1,0,2
 "Shenzhen Sciencare Medical Industries Co., Ltd.",1,1,2
@@ -4673,6 +4672,7 @@ Senti Biosciences,1,0,1
 Sequential Medicine Ltd,1,0,1
 Sequitur Health Corp.,1,0,1
 "Sera Prognostics, Inc.",1,0,1
+Seraxis,1,0,1
 "Serene Sleep, Inc.",1,0,1
 "Serenity Medical, Inc.",1,0,1
 Serina Therapeutics,1,0,1
@@ -5249,7 +5249,6 @@ Alector Inc.,0,2,5
 "CalciMedica, Inc.",0,0,5
 Denovo Biopharma LLC,0,2,5
 EpiEndo Pharmaceuticals,0,0,5
-Indivior Inc.,0,0,5
 "Inmune Bio, Inc.",0,1,5
 Intercept Pharmaceuticals,0,2,5
 MolecuLight Inc.,0,0,5
@@ -5266,6 +5265,7 @@ Carebot s.r.o.,0,0,4
 "Carmot Therapeutics, Inc.",0,0,4
 "EIT Pharma, Inc.",0,0,4
 Hutchison Medipharma Limited,0,2,4
+Indivior Inc.,0,0,4
 "Instituto Grifols, S.A.",0,3,4
 "Invirsa, Inc.",0,0,4
 Love Wellness,0,0,4
@@ -5302,7 +5302,6 @@ Edinburgh Biosciences Ltd,0,0,3
 Enimmune Corporation,0,1,3
 "EnliTISA (Shanghai) Pharmaceutical Co., Ltd.",0,0,3
 ENTire Medical Ltd.,0,0,3
-Forest Hills Lab,0,1,3
 GemVax & Kael,0,0,3
 "Guangdong Longchuangji Pharmaceutical Co., Ltd.",0,1,3
 "Hipra Scientific, S.L.U",0,1,3
@@ -5341,7 +5340,6 @@ A. Vogel AG,0,1,2
 abdulmajeed hammadi,0,0,2
 Akros Pharma Inc.,0,0,2
 Albireo,0,1,2
-"American Regent, Inc.",0,0,2
 "AMIpharm Co., Ltd.",0,1,2
 Amoneta Diagnostics SAS,0,0,2
 "Amphastar Pharmaceuticals, Inc.",0,2,2
@@ -5392,6 +5390,7 @@ Estetra,0,1,2
 "Eucure (Beijing) Biopharma Co., Ltd",0,0,2
 ExCellThera inc.,0,0,2
 Fasikl Inc.,0,0,2
+Forest Hills Lab,0,1,2
 Frisch Medical Device Private Limited,0,0,2
 g.tec medical engineering GmbH,0,0,2
 Galectin Therapeutics Inc.,0,1,2
@@ -5538,6 +5537,7 @@ Amarin Technologies S.A.U.,0,0,1
 Ambu A/S,0,0,1
 Ambu Inc.,0,0,1
 "Amenity Health, Inc.",0,0,1
+"American Regent, Inc.",0,0,1
 AML,0,0,1
 "AMO Development, LLC",0,0,1
 Ampa Medical,0,0,1
