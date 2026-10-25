@@ -378,7 +378,6 @@ BackBeat Medical Inc,3,0,10
 Alumis Inc,3,3,9
 AO GENERIUM,3,4,9
 ProofPilot,3,0,9
-BioCryst Pharmaceuticals,3,5,8
 Bonafide Health,3,0,8
 Carl Zeiss Meditec AG,3,0,8
 Fidia Farmaceutici s.p.a.,3,1,8
@@ -389,6 +388,7 @@ MedtronicNeuro,3,0,8
 "SK Life Science, Inc.",3,5,8
 Trevi Therapeutics,3,2,8
 Adagio Medical,3,0,7
+BioCryst Pharmaceuticals,3,5,7
 Biomea Fusion Inc.,3,0,7
 Cerus Corporation,3,2,7
 "K-Group, Beta, Inc., a wholly owned subsidiary of Zentalis Pharmaceuticals, Inc",3,1,7
@@ -517,7 +517,6 @@ LIB Therapeutics LLC,3,4,4
 McGuire Institute,3,0,4
 Mediar Therapeutics,3,0,4
 "Nanjing RegeneCore Biotech Co., Ltd.",3,0,4
-NEOS Surgery,3,0,4
 Neptune Medical,3,0,4
 Neuronostics Ltd,3,0,4
 Newave Pharmaceutical Inc,3,1,4
@@ -752,6 +751,7 @@ N-Power Medicine,3,0,3
 Nasus Pharma,3,1,3
 "Nectero Medical, Inc.",3,1,3
 Neodent,3,0,3
+NEOS Surgery,3,0,3
 NeuShen Therapeutics,3,0,3
 "Newleos Therapeutics, Inc.",3,0,3
 NIN Institute,3,0,3
@@ -1160,7 +1160,6 @@ SPARK Biopharma,2,0,3
 Spinal Stabilization Technologies,2,0,3
 "Spirair, Inc",2,0,3
 SRI International,2,0,3
-Stealth BioTherapeutics Inc.,2,2,3
 "Sutro Biopharma, Inc.",2,0,3
 "Suzhou Junjing BioSciences Co., Ltd.",2,0,3
 "Synermore Biologics (Suzhou) Co., Ltd.",2,0,3
@@ -1808,6 +1807,7 @@ Spiderwort Biotechnologies Inc.,2,0,2
 Spinal Simplicity LLC,2,0,2
 Splice Bio,2,0,2
 "Square2 Systems, Inc.",2,0,2
+Stealth BioTherapeutics Inc.,2,1,2
 Stelexis BioSciences,2,0,2
 Stella Pharma Corporation,2,0,2
 "StemCyte, Inc.",2,1,2
@@ -2071,9 +2071,7 @@ Rapid Medical,1,0,3
 "ReGenTree, LLC",1,3,3
 Retension Pharmaceuticals. Inc.,1,0,3
 Rob Surgical Systems S.L.,1,0,3
-Santhera Pharmaceuticals,1,0,3
 Sedana Medical,1,3,3
-Serum Life Science Europe GmbH,1,1,3
 Shanghai Life Science & Technology,1,0,3
 "Shanghai SIMR Biotechnology Co., Ltd.",1,0,3
 "Sichuan Purity Pharmaceutical Technology Co., Ltd.",1,0,3
@@ -2398,6 +2396,7 @@ River 2 Renal Corp.,1,0,2
 Rokote Laboratories Finland Oy,1,0,2
 Rudacure,1,0,2
 Sam Chun Dang Pharm. Co. Ltd.,1,0,2
+Santhera Pharmaceuticals,1,0,2
 "SDK Therapeutics, Inc.",1,1,2
 Sebastian Griepentrog,1,0,2
 SecondWave Systems Inc.,1,0,2
@@ -2406,6 +2405,7 @@ Seeding Inc,1,0,2
 Seppic,1,0,2
 "Septerna, Inc.",1,0,2
 "Seqker Biosciences, Inc.",1,0,2
+Serum Life Science Europe GmbH,1,1,2
 "Shandong Branden Med.Device Co.,Ltd",1,0,2
 "Shanghai Weihe Medical Laboratory Co., Ltd.",1,0,2
 "Shenzhen Sciencare Medical Industries Co., Ltd.",1,1,2
@@ -5364,7 +5364,6 @@ Sensome,0,0,3
 Soligenix,0,1,3
 "SQ Innovation, Inc.",0,0,3
 "Supplement Formulators, Inc.",0,0,3
-"Teikoku Seiyaku Co., Ltd.",0,2,3
 "Transposon Therapeutics, Inc.",0,0,3
 "Tris Pharma, Inc.",0,2,3
 VBI Vaccines Inc.,0,0,3
@@ -5517,6 +5516,7 @@ Stayble Therapeutics,0,0,2
 "SwanBio Therapeutics, Inc.",0,0,2
 "Sylentis, S.A.",0,1,2
 Taiwan Bio Therapeutics Inc.,0,0,2
+"Teikoku Seiyaku Co., Ltd.",0,1,2
 Vanarix SA,0,0,2
 Verge Genomics,0,0,2
 "Visara, Inc.",0,0,2
@@ -5873,7 +5873,6 @@ Integrative Pain Science Institute,0,0,1
 "Interscope, Inc.",0,0,1
 Io Therapeutics,0,0,1
 iOmx Therapeutics AG,0,0,1
-Island Pharmaceuticals,0,0,1
 "Ivantis, Inc.",0,0,1
 Jaime Marino,0,0,1
 Jamp Pharma Corporation,0,0,1
@@ -5889,7 +5888,6 @@ Jupiter Endovascular,0,0,1
 Juro Sciences Inc.,0,0,1
 "Kamada, Ltd.",0,1,1
 "Kangpu Biopharmaceuticals, Ltd.",0,0,1
-Karex Industries Sdn. Bhd.,0,0,1
 Kariya Pharmaceuticals,0,0,1
 KAZM Pharmaceuticals Inc.,0,1,1
 Kendal Nutricare Ltd,0,1,1
@@ -6080,7 +6078,6 @@ Phynova Group Ltd,0,0,1
 "Pico Entech Co., Ltd.",0,0,1
 Pixacare,0,0,1
 Pneumacare Ltd,0,0,1
-Polynoma LLC,0,1,1
 Portal Access Ltd.,0,0,1
 Positrigo AG,0,0,1
 "Praxis Bioresearch, LLC",0,0,1
