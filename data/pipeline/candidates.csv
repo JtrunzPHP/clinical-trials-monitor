@@ -942,7 +942,6 @@ Alvotech Swiss AG,2,2,4
 Ardelyx,2,3,4
 Aroa Biosurgery Limited,2,0,4
 "ARS Pharmaceuticals, Inc.",2,0,4
-Artios Pharma Ltd,2,0,4
 Attovia Therapeutics Inc,2,0,4
 Aurinia Pharmaceuticals Inc.,2,2,4
 "Beaver-Visitec International, Inc.",2,0,4
@@ -969,7 +968,6 @@ Glyance,2,0,4
 Guerbet,2,3,4
 "Hangzhou Hanx Biopharmaceuticals, Ltd.",2,0,4
 HelpWear Inc.,2,0,4
-Inmagene LLC,2,0,4
 Intelligent Bio Solutions Inc.,2,0,4
 Kate Farms Inc,2,0,4
 "Lynk Pharmaceuticals Co., Ltd",2,3,4
@@ -1019,6 +1017,7 @@ Applied Food Sciences Inc.,2,0,3
 Arctic Therapeutics,2,0,3
 "Arnatar Therapeutics, Inc.",2,0,3
 "Arsenal Biosciences, Inc.",2,0,3
+Artios Pharma Ltd,2,0,3
 "Artiva Biotherapeutics, Inc.",2,0,3
 Aston Sci. Inc.,2,0,3
 Athletic Greens International,2,0,3
@@ -1084,7 +1083,7 @@ ImmuneSensor Therapeutics Inc.,2,0,3
 "Impact Therapeutics, Inc.",2,1,3
 "Imperative Care, Inc.",2,0,3
 Indena S.p.A,2,0,3
-Inhibikase Therapeutics,2,2,3
+Inmagene LLC,2,0,3
 Innoventric LTD,2,0,3
 "Intalight, Inc",2,0,3
 "Intralytix, Inc.",2,0,3
@@ -1511,6 +1510,7 @@ Implicity,2,0,2
 Imricor Medical Systems,2,0,2
 Imviva Bio,2,0,2
 Infectopharm Arzneimittel GmbH,2,1,2
+Inhibikase Therapeutics,2,2,2
 Inion Oy,2,0,2
 Innolake Biopharm,2,0,2
 Innopeutics Corporation,2,0,2
@@ -1990,7 +1990,6 @@ SafeHeal Inc,1,0,4
 Shaklee Corporation,1,0,4
 SIFI SpA,1,0,4
 Sinomed Neurovita Technology Inc.,1,0,4
-"Skingenix, Inc.",1,0,4
 "Spectrum Pharmaceuticals, Inc",1,1,4
 Xemed LLC,1,0,4
 "Abcuro, Inc.",1,2,3
@@ -2106,7 +2105,6 @@ Akamis Bio,1,0,2
 AlaMab Therapeutics (Shanghai) Inc.,1,0,2
 Albos d.o.o. Beograd,1,0,2
 Allegro NV/SA,1,0,2
-Allyx Therapeutics,1,0,2
 Alpha-9 Oncology USA Inc.,1,0,2
 AlphaMol Science Ltd. (Shanghai),1,0,2
 "Alpine Immune Sciences Inc, A Subsidiary of Vertex",1,1,2
@@ -2294,7 +2292,6 @@ Kernel,1,0,2
 Koelis,1,0,2
 "Korro Bio, Inc.",1,0,2
 Laminate Medical Technologies,1,0,2
-"Leuko Labs, Inc.",1,0,2
 Lexicon Pharmaceuticals,1,1,2
 Liberate Medical,1,0,2
 Limbic Limited,1,0,2
@@ -2596,6 +2593,7 @@ Alligator Bioscience AB,1,0,1
 "AllRock Bio, Inc.",1,0,1
 "Allterum Therapeutics, Inc",1,0,1
 Allyane,1,0,1
+Allyx Therapeutics,1,0,1
 Almac Diagnostic Services LLC,1,0,1
 "Alpha Cognition, Inc",1,0,1
 Alpha Fusion Inc.,1,0,1
@@ -3845,6 +3843,7 @@ Lenoss Medical,1,0,1
 LeonaBio,1,1,1
 Letolab,1,0,1
 Leucid Bio,1,0,1
+"Leuko Labs, Inc.",1,0,1
 Leukos Biotech S.L.,1,0,1
 Lexington Medical Inc.,1,0,1
 LiangZou,1,0,1
@@ -4789,6 +4788,7 @@ Sitryx Therapeutics Ltd,1,0,1
 "SK Plasma Co., Ltd.",1,1,1
 SKIA Inc.,1,0,1
 Skin Tech Pharma Group S.L.U.,1,0,1
+"Skingenix, Inc.",1,0,1
 Skribe Medical,1,0,1
 Sky Labs,1,0,1
 Skylark Bio Inc.,1,0,1
@@ -5864,7 +5864,6 @@ ICM Biotech Australia Pty Ltd.,0,0,1
 IgGenix Australia Pty Ltd,0,0,1
 iGluco,0,0,1
 "ILAb Co., Ltd.",0,0,1
-ILiAD Biotechnologies,0,0,1
 Imbrium Therapeutics,0,0,1
 Immunobrain Checkpoint,0,0,1
 "ImmunoChem Therapeutics, LLC",0,0,1
@@ -6306,7 +6305,6 @@ Vespina Lifesciences Inc.,0,0,1
 Vial Australia Pty Ltd,0,0,1
 Videja B.V.,0,0,1
 "Vigorous Mind, Inc.",0,0,1
-Vinbiocare Biotechnology Joint Stock Company,0,1,1
 "Vireo Systems, Inc.",0,0,1
 Virion Therapeutics,0,0,1
 ViroGates A/S,0,0,1
