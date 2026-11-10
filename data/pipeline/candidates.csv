@@ -3,14 +3,14 @@ Beijing Biotech,32,0,32
 Research Inc,23,0,24
 "Wecare Probiotics Co., Ltd.",19,0,37
 EMS,14,19,20
+"Genrix (Shanghai) Biopharmaceutical Co., Ltd.",14,4,15
 Shanghai Institute Of Biological Products,14,1,15
 "Nanjing Leads Biolabs Co.,Ltd",13,1,17
 Genfleet Therapeutics (Shanghai) Inc.,13,3,14
-"Genrix (Shanghai) Biopharmaceutical Co., Ltd.",13,4,14
 "Ausper Biopharma Co., Ltd.",12,1,14
+"Xiamen Amoytop Biotech Co., Ltd.",12,3,14
 Changchun BCHT Biotechnology Co.,12,3,12
 "Shanghai Huaota Biopharmaceutical Co., Ltd.",11,3,13
-"Xiamen Amoytop Biotech Co., Ltd.",11,3,13
 "Avistone Biotechnology Co., Ltd.",11,2,11
 DualityBio Inc.,11,2,11
 Juventas Cell Therapy Ltd.,11,0,11
@@ -32,7 +32,6 @@ BeBetter Med Inc,8,3,12
 "Beijing Mabworks Biotech Co., Ltd.",8,2,10
 "Ganzhou Hemay Pharmaceutical Co., Ltd",8,2,10
 InSilico Medicine Hong Kong Limited,8,1,9
-"NuScience Medical Biologics, LLC",8,0,9
 "OncoC4, Inc.",8,2,9
 "Shanghai Argo Biopharmaceutical Co., Ltd.",8,0,9
 "Shanghai Cell Therapy Group Co.,Ltd",8,0,9
@@ -52,6 +51,7 @@ MAXVAX Biotechnology Limited Liability Company,7,4,10
 "China Immunotech (Beijing) Biotechnology Co., Ltd.",7,0,9
 "CorrectSequence Therapeutics Co., Ltd",7,0,9
 "Beijing Biostar Pharmaceuticals Co., Ltd.",7,2,8
+"Hangzhou Sciwind Biosciences Co., Ltd.",7,4,8
 "Jiangsu Aosaikang Pharmaceutical Co., Ltd.",7,3,8
 "Beijing Immunochina Medical Science & Technology Co., Ltd.",7,0,7
 Excyte Biopharma Ltd,7,0,7
@@ -64,16 +64,15 @@ Multitude Therapeutics Inc.,7,1,7
 "AJU Pharm Co., Ltd.",6,1,12
 "Binhui Biopharmaceutical Co., Ltd.",6,1,9
 "Jecho Biopharmaceuticals Co., Ltd.",6,1,9
+"NuScience Medical Biologics, LLC",6,0,9
 "Zhejiang Doer Biologics Co., Ltd.",6,2,9
 Lumos Pharma,6,2,8
-Sinotau Pharmaceutical Group,6,4,8
 "Wuhan Createrna Science and Technology Co., Ltd",6,4,8
 "3D Medicines (Sichuan) Co., Ltd.",6,2,7
 Azafaros B.V.,6,4,7
 "Beijing Gene Key Life Technology Co., Ltd",6,0,7
 "Hangzhou Endonom Medtech Co., Ltd.",6,0,7
 "Hangzhou Huasai Biomedicine Co., Ltd.",6,0,7
-"Hangzhou Sciwind Biosciences Co., Ltd.",6,4,7
 "Shandong Boan Biotechnology Co., Ltd",6,1,7
 "Beijing Geekgene Technology Co., LTD",6,0,6
 bioLytical Laboratories,6,0,6
@@ -84,7 +83,6 @@ Guangzhou Jiayin Biotech Ltd,6,0,6
 "Guangzhou Virotech Pharmaceutical Co., Ltd.",6,1,6
 "Hangzhou DAC Biotechnology Co., Ltd.",6,0,6
 "Hangzhou Valgen Medtech Co., Ltd",6,0,6
-"HELP Therapeutics Co., Ltd.",6,1,6
 "Innostellar Biotherapeutics Co.,Ltd",6,2,6
 InnovStone Therapeutics Limited,6,0,6
 "iRegene Therapeutics Co., Ltd.",6,0,6
@@ -99,9 +97,11 @@ Shanghai YingLi Pharmaceutical Co. Ltd.,6,1,6
 "Ascletis Pharma (China) Co., Limited",5,2,10
 Huahui Health,5,2,9
 "Neurodawn Pharmaceutical Co., Ltd.",5,1,8
+Sinotau Pharmaceutical Group,5,4,8
 Unilever R&D,5,0,8
 Candid Therapeutics,5,0,7
 "Definium Therapeutics US, Inc.",5,4,7
+dsm-firmenich Switzerland AG,5,0,7
 EyeBiotech Ltd.,5,4,7
 "GRIN Therapeutics, Inc.",5,1,7
 "Nanjing Bioheng Biotech Co., Ltd.",5,0,7
@@ -109,7 +109,6 @@ Regend Therapeutics,5,1,7
 "TJ Biopharma Co., Ltd.",5,2,7
 "Climb Bio, Inc.",5,0,6
 "D3 Bio (Wuxi) Co., Ltd",5,0,6
-dsm-firmenich Switzerland AG,5,0,6
 Eccogene,5,0,6
 "Ever Supreme Bio Technology Co., Ltd.",5,0,6
 "Haihe Biopharma Co., Ltd.",5,0,6
@@ -124,6 +123,7 @@ Fortvita Biologics (USA)Inc.,5,0,5
 "GI Innovation, Inc.",5,0,5
 "Grand Theravac Life Sciences (Nanjing) Co., Ltd.",5,1,5
 "Han Xu, M.D., Ph.D., FAPCR, Sponsor-Investigator, IRB Chair",5,2,5
+"HELP Therapeutics Co., Ltd.",5,1,5
 Hinova Pharmaceuticals Inc.,5,2,5
 "HuidaGene Therapeutics Co., Ltd.",5,0,5
 "Jade Biosciences, Inc.",5,1,5
@@ -194,7 +194,6 @@ CMR Surgical Ltd,4,0,5
 "Corvus Pharmaceuticals, Inc.",4,1,5
 Cosmetique Active International,4,0,5
 "Criterium, Inc.",4,0,5
-Eilean Therapeutics,4,0,5
 "Evergreen Therapeutics, Inc.",4,1,5
 "EyePoint Pharmaceuticals, Inc.",4,4,5
 "Hangzhou Dinova EP Technology Co., Ltd",4,0,5
@@ -274,6 +273,7 @@ FBD Biologics Limited,4,0,4
 "Forte Biosciences, Inc.",4,0,4
 "Frantz Viral Therapeutics, LLC",4,0,4
 "Fujian Akeylink Biotechnology Co., Ltd.",4,2,4
+FUSMobile Inc.,4,0,4
 "GrandPharma (China) Co., Ltd.",4,0,4
 "GT Medical Technologies, Inc.",4,2,4
 "Guangzhou FineImmune Biotechnology Co., LTD.",4,0,4
@@ -366,13 +366,13 @@ Vesalio,4,0,4
 "VIS, Inc.",4,1,4
 Tanabe Pharma Corporation,3,60,90
 BackBeat Medical Inc,3,0,10
+BioCryst Pharmaceuticals,3,5,10
 "Klein Buendel, Inc.",3,0,10
 "Sound Pharmaceuticals, Incorporated",3,2,10
 Alumis Inc,3,3,9
 AO GENERIUM,3,4,9
 ProofPilot,3,0,9
 "Shanghai Ark Biopharmaceutical Co., Ltd.",3,4,9
-BioCryst Pharmaceuticals,3,5,8
 Bonafide Health,3,0,8
 Carl Zeiss Meditec AG,3,0,8
 Fidia Farmaceutici s.p.a.,3,1,8
@@ -383,6 +383,7 @@ Implicit Bioscience,3,0,8
 "SK Life Science, Inc.",3,5,8
 Trevi Therapeutics,3,2,8
 Adagio Medical,3,0,7
+"Beijing Inno Medicine Co., Ltd.",3,0,7
 Cerus Corporation,3,2,7
 "K-Group, Beta, Inc., a wholly owned subsidiary of Zentalis Pharmaceuticals, Inc",3,1,7
 Kyverna Therapeutics,3,1,7
@@ -423,6 +424,7 @@ Bright Uro,3,0,5
 Camurus AB,3,4,5
 "Conjupro Biotherapeutics, Inc.",3,0,5
 DBV Technologies,3,5,5
+Eilean Therapeutics,3,0,5
 Femasys Inc.,3,0,5
 Heartstream US LLC,3,0,5
 Hofseth Biocare ASA,3,0,5
@@ -491,7 +493,6 @@ ExThera Medical Corporation,3,0,4
 Francis Medical Inc.,3,0,4
 "Fujifilm Pharmaceuticals U.S.A., Inc.",3,0,4
 Fusion Pharmaceuticals Inc.,3,0,4
-"Halia Therapeutics, Inc.",3,0,4
 "Hangzhou Gensciences Biopharmaceutical Co., Ltd.",3,4,4
 "Hangzhou Yirui Pharmaceutical Technology Co., Ltd",3,0,4
 Heartfelt Technologies,3,0,4
@@ -510,7 +511,6 @@ Laboratoires Gilbert,3,0,4
 McGuire Institute,3,0,4
 Mediar Therapeutics,3,0,4
 "Nanjing RegeneCore Biotech Co., Ltd.",3,0,4
-Neptune Medical,3,0,4
 Newave Pharmaceutical Inc,3,1,4
 Nexira,3,0,4
 Nuritas Ltd,3,0,4
@@ -518,7 +518,6 @@ Nuritas Ltd,3,0,4
 "Nuvectis Pharma, Inc.",3,0,4
 OrbusNeich,3,0,4
 "Ossium Health, Inc.",3,0,4
-Pacific Edge Limited,3,0,4
 "Phathom Pharmaceuticals, Inc.",3,1,4
 "PRG Science & Technology Co., Ltd.",3,0,4
 Primus Pharmaceuticals,3,0,4
@@ -586,7 +585,6 @@ Artoss Inc.,3,0,3
 "AskGene Pharma, Inc.",3,1,3
 AusperBio Therapeutics Inc.,3,0,3
 Avalyn Pharma Inc.,3,0,3
-"AVAVA, Inc.",3,0,3
 "Aveta Biomics, Inc.",3,1,3
 Aymes International Limited,3,0,3
 Beeline Medicines Corporation,3,1,3
@@ -656,7 +654,6 @@ FluidAI Medical,3,1,3
 "Forward Pharmaceuticals Co., Ltd.",3,0,3
 "Foundry Innovation & Research 1, Limited (FIRE1)",3,0,3
 FrieslandCampina,3,1,3
-FUSMobile Inc.,3,0,3
 FutureChem,3,3,3
 GCA (Eurosilicone),3,0,3
 "Gracell Biotechnologies (Shanghai) Co., Ltd.",3,0,3
@@ -780,6 +777,7 @@ Red Rock Regeneration Inc.,3,0,3
 RedDress Ltd.,3,0,3
 "Reprise Biomedical, Inc.",3,0,3
 Resilience,3,2,3
+Resurge Therapeutics Inc.,3,0,3
 ReValve Solutions Inc.,3,0,3
 "Riboscience, LLC.",3,0,3
 RTI Surgical,3,0,3
@@ -816,7 +814,9 @@ SoniVie Inc.,3,0,3
 Spinal Simplicity LLC,3,0,3
 SPINEVISION SAS,3,0,3
 "STCube, Inc.",3,0,3
+Stealth BioTherapeutics Inc.,3,1,3
 "Step Pharma, SAS",3,0,3
+Suisselle,3,0,3
 "SunWay Biotech Co., LTD.",3,0,3
 Suzhou Hengruihongyuan Medical Technology Co. LTD,3,0,3
 "Suzhou Maximum Bio-tech Co., Ltd.",3,0,3
@@ -837,10 +837,10 @@ Teligene US,3,0,3
 Tessa Therapeutics,3,0,3
 "Tianjin ConjuStar Biologics Co., Ltd.",3,0,3
 TIPMED Medical Device Manufacturing Ltd. Co.,3,0,3
-Tissium,3,0,3
 "Tr1X, Inc.",3,0,3
 Transdermal Delivery Solutions Corp,3,1,3
 TriCity Research Center,3,0,3
+TripleMed B.V.,3,0,3
 "Turning Point Therapeutics, Inc.",3,0,3
 Umoja Biopharma,3,0,3
 United Pharmaceuticals,3,0,3
@@ -885,7 +885,6 @@ Solventum US LLC,2,0,7
 "Vincentage Pharma Co., Ltd",2,1,7
 Agenus Inc.,2,0,6
 "Atea Pharmaceuticals, Inc.",2,2,6
-"Beijing Inno Medicine Co., Ltd.",2,0,6
 Cellution Biologics,2,0,6
 Ceragem Clinical Inc.,2,0,6
 "Danone Asia Pacific Holdings Pte, Ltd.",2,0,6
@@ -966,6 +965,7 @@ Glyance,2,0,4
 "Good Molecules, LLC",2,1,4
 "GuangZhou Cellgenes Biotechnology Co., Ltd.",2,0,4
 Guerbet,2,3,4
+"Halia Therapeutics, Inc.",2,0,4
 "Hangzhou Hanx Biopharmaceuticals, Ltd.",2,0,4
 HelpWear Inc.,2,0,4
 Intelligent Bio Solutions Inc.,2,0,4
@@ -973,9 +973,11 @@ Kate Farms Inc,2,0,4
 "Lynk Pharmaceuticals Co., Ltd",2,3,4
 Mapi Pharma Ltd.,2,1,4
 Myant Medical Corp.,2,0,4
+Neptune Medical,2,0,4
 NeuroPace,2,0,4
 "NiKang Therapeutics, Inc.",2,0,4
 Nucleix Ltd.,2,0,4
+Pacific Edge Limited,2,0,4
 Persephone Biosciences,2,0,4
 "Portal Therapeutics, Inc.",2,1,4
 ReCode Therapeutics,2,0,4
@@ -1026,6 +1028,8 @@ Athletic Greens International,2,0,3
 Aurion Biotech,2,1,3
 "Autobahn Therapeutics, Inc.",2,0,3
 Autotelicbio,2,1,3
+"AVAVA, Inc.",2,0,3
+"Beijing Supreme Life Pharmaceutical Technology Co., Ltd.",2,0,3
 "Belite Bio, Inc",2,3,3
 Biocomposites Ltd,2,0,3
 Biocon Biologics UK PLC,2,0,3
@@ -1040,7 +1044,6 @@ Centervue SpA,2,0,3
 "Century Therapeutics, Inc.",2,0,3
 CGBio Inc.,2,1,3
 Checkpoint Surgical Inc.,2,0,3
-"Clear Scientific, Inc.",2,0,3
 Clover Link,2,0,3
 "Cognito Therapeutics, Inc.",2,0,3
 Complement Therapeutics,2,0,3
@@ -1173,6 +1176,7 @@ SRI International,2,0,3
 Taivex Therapeutics Corporation,2,0,3
 "Thiogenesis Therapeutics, Inc.",2,0,3
 "Thryv Therapeutics, Inc.",2,1,3
+Tissium,2,0,3
 Toll Biotech Co. Ltd. (Beijing),2,0,3
 Tolmar Inc.,2,2,3
 "Toray Industries, Inc",2,0,3
@@ -1354,6 +1358,7 @@ CorFlow Therapeutics AG,2,0,2
 CorMedix Therapeutics,2,1,2
 Corsera Health,2,0,2
 "Corvivo Cardiovascular, Inc.",2,0,2
+Corza Medical GmbH,2,1,2
 "COSMO ROBOTICS CO., Ltd",2,0,2
 "Cosmos Rx, Inc",2,0,2
 CrannMed,2,0,2
@@ -1549,6 +1554,7 @@ Juvena Therapeutics,2,0,2
 JYAMS PET Research & Development Limited,2,2,2
 "K36 Therapeutics, Inc.",2,0,2
 "Kali Therapeutics, Inc.",2,0,2
+"Kanglin Biotechnology (Hangzhou) Co., Ltd.",2,0,2
 "Karius, Inc.",2,0,2
 Kivu Bioscience Inc.,2,0,2
 "Kringle Pharma, Inc.",2,2,2
@@ -1597,6 +1603,7 @@ MED Institute Inc.,2,0,2
 "Medaxis, LLC",2,0,2
 Medialis Ltd.,2,0,2
 Medical Inventi S.A.,2,0,2
+Medicure,2,2,2
 Medigen Biotechnology Corporation,2,0,2
 Medipost Co Ltd.,2,0,2
 Medistim ASA,2,0,2
@@ -1722,7 +1729,7 @@ Puressentiel,2,0,2
 Q32 Bio Inc.,2,0,2
 QBiotics Group Limited,2,0,2
 QualiMed Innovative Medizinprodukte GmbH,2,0,2
-"QuantX Biosciences, Inc.",2,0,2
+QuantX Biosciences US Inc.,2,0,2
 Qufora A/S,2,0,2
 R-Bio,2,1,2
 "Ratio Therapeutics, Inc.",2,0,2
@@ -1739,7 +1746,6 @@ Resilient Pharmaceuticals,2,0,2
 Resolve Stroke,2,0,2
 "Restem, LLC.",2,1,2
 Restorbio Inc.,2,0,2
-Resurge Therapeutics Inc.,2,0,2
 Resverlogix Corp,2,1,2
 Rgene Corporation,2,0,2
 RiboX Therapeutics Ltd.,2,0,2
@@ -1777,7 +1783,7 @@ Shanghai Yao Yuan Biotechnology Ltd. (also known as Drug Farm),2,0,2
 Shanton Pharma Pte. Ltd.,2,0,2
 "Shenzhen Ausa Pharmed Co.,Ltd",2,0,2
 "Shenzhen Majory Biotechnology Co., Ltd.",2,0,2
-"Shenzhen Pulsecare Medical Technology Co., Ltd.",2,0,2
+"Shenzhen NewDEL Biotech, Co., Ltd",2,0,2
 "Shenzhen Wingor Biotechnology Co., Ltd.",2,0,2
 "Shine-On Biomedical Co., Ltd.",2,0,2
 "Sichuan Honghe Biotechnology Co., Ltd.",2,0,2
@@ -1798,7 +1804,6 @@ SpectraCure AB,2,0,2
 Spiderwort Biotechnologies Inc.,2,0,2
 Splice Bio,2,0,2
 "Square2 Systems, Inc.",2,0,2
-Stealth BioTherapeutics Inc.,2,1,2
 Stelexis BioSciences,2,0,2
 Stella Pharma Corporation,2,0,2
 "StemCyte, Inc.",2,1,2
@@ -1846,7 +1851,6 @@ TRB Chemedica International SA,2,0,2
 "Treadwell Therapeutics, Inc",2,0,2
 "Triastek, lnc.",2,0,2
 Tridem Bioscience FlexCo,2,0,2
-TripleMed B.V.,2,0,2
 Triveni Bio,2,0,2
 "TrueLab Biopharmaceutical Co., Ltd",2,0,2
 TTY Biopharm,2,0,2
@@ -1929,9 +1933,9 @@ SIGA Technologies,1,2,9
 Accexible,1,0,8
 Glycyx Therapeutics,1,0,8
 Immedica Pharma AB,1,4,8
+"Aldeyra Therapeutics, Inc.",1,4,7
 USMARI Research & Innovation Centre,1,0,7
 Achieve Life Sciences,1,5,6
-"Aldeyra Therapeutics, Inc.",1,4,6
 Cinclus Pharma Holding AB,1,2,6
 "Corium Innovations, Inc.",1,0,6
 Dragonboat Biopharmaceutical Company Limited,1,0,6
@@ -2133,6 +2137,7 @@ Argon Medical Devices,1,0,2
 "Aribio Lab Co., Ltd.",1,0,2
 Artah Nutrition Limited,1,0,2
 AryoGen Pharmed Co.,1,0,2
+"Asahi Kasei Therapeutics, AB",1,0,2
 Aspa Therapeutics,1,0,2
 "aTyr Pharma, Inc.",1,1,2
 AvenCell Europe GmbH,1,0,2
@@ -2148,7 +2153,6 @@ Balt USA,1,0,2
 Baylx Inc.,1,0,2
 Beacon Biosignals,1,0,2
 Beijing StarMab Biomed Technology Ltd,1,0,2
-"Beijing Supreme Life Pharmaceutical Technology Co., Ltd.",1,0,2
 BeyondSpring Pharmaceuticals Inc.,1,2,2
 BioAegis Therapeutics Inc.,1,0,2
 Biobeat Technologies Ltd.,1,0,2
@@ -2166,7 +2170,6 @@ BriaCell Therapeutics Corporation,1,1,2
 Bridge to Life Ltd.,1,0,2
 Britannia Pharmaceuticals Ltd.,1,0,2
 Bühlmann Laboratories AG,1,0,2
-Calliditas Therapeutics AB,1,0,2
 Cambium Bio Limited,1,1,2
 Cantex Pharmaceuticals,1,0,2
 CardiacSense Ltd.,1,0,2
@@ -2207,6 +2210,7 @@ Delfi Diagnostics Inc.,1,0,2
 "Delta-Fly Pharma, Inc.",1,1,2
 Desentum Oy,1,0,2
 Designs for Health,1,0,2
+DiaMedica Therapeutics Inc,1,1,2
 Diamyd Medical AB,1,1,2
 DigitalRehab,1,0,2
 Dimagi Inc.,1,0,2
@@ -2400,6 +2404,7 @@ Rokote Laboratories Finland Oy,1,0,2
 Rudacure,1,0,2
 Sam Chun Dang Pharm. Co. Ltd.,1,0,2
 Santhera Pharmaceuticals,1,0,2
+"SATO Pharmaceutical Co., Ltd.",1,0,2
 "SDK Therapeutics, Inc.",1,1,2
 Sebastian Griepentrog,1,0,2
 SecondWave Systems Inc.,1,0,2
@@ -2412,6 +2417,7 @@ Seppic,1,0,2
 "Shandong Branden Med.Device Co.,Ltd",1,0,2
 "Shanghai HEP Pharmaceutical Co., Ltd.",1,1,2
 "Shanghai Weihe Medical Laboratory Co., Ltd.",1,0,2
+"Shenzhen Pulsecare Medical Technology Co., Ltd.",1,0,2
 "Shenzhen Sciencare Medical Industries Co., Ltd.",1,1,2
 Silony Medical GmbH,1,0,2
 SinoMab BioScience Ltd,1,0,2
@@ -3059,7 +3065,6 @@ Chengdu Silara Meditech Inc.,1,0,1
 "Chengdu StarRay Therapeutics Co., Ltd",1,0,1
 "CHFDX,Inc.",1,0,1
 ChM sp. z o.o.,1,0,1
-Chobani,1,0,1
 "Chongqing Genrix Biopharmaceutical Co., Ltd",1,0,1
 "Chordia Therapeutics, Inc.",1,0,1
 Chr Hansen - part of Novonesis,1,0,1
@@ -3127,7 +3132,6 @@ CornerLoc,1,0,1
 Cornerstone Robotics,1,0,1
 Cortex,1,0,1
 CorWave,1,0,1
-Corza Medical GmbH,1,1,1
 Cosmo Artificial Intelligence-AI Ltd,1,0,1
 "Cosomil, Inc.",1,0,1
 Cough Monitoring Medical Solutions,1,0,1
@@ -3207,7 +3211,6 @@ dfusion Inc,1,0,1
 Diagnostica Stago R&D,1,0,1
 "Diagonal Therapeutics, Inc.",1,0,1
 Diality Inc.,1,0,1
-DiaMedica Therapeutics Inc,1,1,1
 Diamens FlexCo,1,0,1
 diaMentis Inc.,1,0,1
 DIAMPARK,1,0,1
@@ -3566,6 +3569,7 @@ Heidelberg Pharma AG,1,0,1
 Helios Aesthetics Inc.,1,0,1
 Helios Cardio Inc.,1,0,1
 "Helix, Inc",1,0,1
+"HELP Therapeutics, Inc.",1,0,1
 Hemerion Therapeutics,1,0,1
 Hemitec Finland Oy,1,0,1
 Hemogenyx Pharmaceuticals LLC,1,0,1
@@ -3631,7 +3635,6 @@ Ichnos Sciences SA,1,0,1
 iCoat Medical AB,1,1,1
 Iconic Solutions By Murcia SL,1,0,1
 IDB VisionCare SDN BHD,1,1,1
-"IDBiologics, Inc.",1,0,1
 IdentifyHer Limited,1,0,1
 "Idera Pharmaceuticals, Inc.",1,0,1
 IDI Skincare Limited,1,0,1
@@ -3719,6 +3722,7 @@ Isofol Medical AB,1,0,1
 "iSono Health, Inc.",1,0,1
 iSpecimen Inc,1,0,1
 Isto Biologics,1,0,1
+"ISTx, LLC",1,1,1
 "ITabMed Co., Ltd.",1,0,1
 "Itamar-Medical, Israel",1,0,1
 "ITERIA BIOPHARMA, S.L.",1,0,1
@@ -3765,7 +3769,6 @@ Kaken Pharmaceutical,1,1,1
 KaliVir Immunotherapeutics,1,0,1
 Kamau Therapeutics,1,0,1
 Kane Biotech Inc,1,0,1
-"Kanglin Biotechnology (Hangzhou) Co., Ltd.",1,0,1
 Kanvas Biosciences,1,0,1
 KARDI AI Technologies s.r.o.,1,0,1
 Kardion Inc,1,0,1
@@ -3947,7 +3950,6 @@ Medical Intelligence Group,1,0,1
 "Medicine Invention Design, Inc",1,1,1
 "Medicovestor, Inc",1,0,1
 Medicsensors S.L,1,0,1
-Medicure,1,1,1
 "Medigen, Inc.",1,0,1
 Medigene AG,1,0,1
 Medinice S.A.,1,0,1
@@ -4017,6 +4019,7 @@ Minerva Neurosciences,1,1,1
 Mingge LLC,1,0,1
 "MingSight Pharmaceuticals, Inc",1,0,1
 Mintech Bio Ltd,1,0,1
+MipSalus Aps,1,0,1
 "Miracle Biomedical Co., Ltd.",1,0,1
 Mirai Medical,1,0,1
 Mirvie,1,0,1
@@ -4204,7 +4207,6 @@ North Immunology Inc.,1,0,1
 "North Shore Therapeutics, Inc.",1,0,1
 NorthSea Therapeutics B.V.,1,0,1
 Notal Vision Inc.,1,0,1
-Notos Medical Limited,1,0,1
 Noucor Health S.A.,1,0,1
 Nouscom SRL,1,0,1
 Nova Laboratories Limited,1,0,1
@@ -4386,6 +4388,7 @@ Paulex Bio Inc.,1,0,1
 Pauli Ohukainen,1,0,1
 PDC*line Pharma SAS,1,0,1
 PDFE Pharma Innovations FZCO,1,0,1
+Peach Perfect,1,0,1
 PEACHES BIOTECH,1,0,1
 "Pearsanta, Inc",1,0,1
 PECA Labs,1,0,1
@@ -4574,6 +4577,7 @@ Replasia BV,1,0,1
 Replior AB,1,0,1
 ReproNovo Aps,1,0,1
 Research Institute of Geroprotective Technologies,1,0,1
+"Reselute, Inc.",1,0,1
 Resolve Therapeutics,1,0,1
 Resonova (Shanghai) Medtech Limited,1,0,1
 RespirAI US Inc,1,0,1
@@ -4749,7 +4753,6 @@ ShenZhen Cell Valley,1,0,1
 "Shenzhen Hepalink Pharmaceutical Group Co., Ltd.",1,0,1
 "Shenzhen Lifevalve Medical Scientific Co., Ltd.",1,0,1
 "Shenzhen MingSight Relin Pharmaceuticals Co., Ltd.",1,0,1
-"Shenzhen NewDEL Biotech, Co., Ltd",1,0,1
 "Shenzhen Oculgen Biomedical Technology Co., Ltd.",1,1,1
 "Shenzhen Tonglu Technology Co., Ltd",1,0,1
 Shenzhen Xinhe Biomedical,1,0,1
@@ -4879,7 +4882,6 @@ Storz Medical AG,1,0,1
 StratiHealth,1,0,1
 Streetlab,1,0,1
 Sudhir Srivastava Innovations Pvt. Ltd.,1,0,1
-Suisselle,1,0,1
 "Summa Therapeutics, LLC",1,0,1
 Sun Protection Foundation,1,0,1
 "Sundance Biosciences, Inc.",1,0,1
@@ -5325,6 +5327,7 @@ Cardior Pharmaceuticals GmbH,0,0,3
 "Carl Zeiss Meditec, Inc.",0,0,3
 "CinDome Pharma, Inc.",0,0,3
 Cingulate Therapeutics,0,3,3
+"Clear Scientific, Inc.",0,0,3
 Closed Loop Medicine,0,0,3
 "Cocrystal Pharma, Inc.",0,0,3
 Cordio Medical,0,0,3
@@ -5352,6 +5355,7 @@ J2H Biotech,0,0,3
 Knoa Pharma LLC,0,0,3
 NeoImmuneTech,0,0,3
 NewLink Genetics Corporation,0,0,3
+NodThera Ltd. (a Rezera company),0,0,3
 Otivio AS,0,0,3
 Owlstone Ltd,0,0,3
 Processa Pharmaceuticals,0,0,3
@@ -5361,7 +5365,6 @@ Processa Pharmaceuticals,0,0,3
 Rallybio,0,0,3
 "ReGenTree, LLC",0,3,3
 "Reinovax Biologics Co., LTD",0,0,3
-Rezera (formerly NodThera Limited),0,0,3
 "Rose Research Center, LLC",0,2,3
 Sanoculis Ltd,0,0,3
 Sensome,0,0,3
@@ -5619,6 +5622,7 @@ ART Medical Ltd.,0,0,1
 "Artivila (Shenzhen) Innovation Center, Ltd",0,0,1
 Arxx Therapeutics,0,0,1
 Asahi Kasei Therapeutics Corporation,0,0,1
+Ascelia Pharma AB,0,1,1
 Ascensia Diabetes Care,0,0,1
 Ashkan Vaziri,0,0,1
 "Aspartes Pharmaceuticals, Inc.",0,0,1
@@ -5704,6 +5708,7 @@ Cessatech A/S,0,1,1
 "CHABiotech CO., Ltd",0,0,1
 Chengdu Diao Jiuhong Pharmaceutical Factory,0,0,1
 Chess Mobile Health,0,0,1
+Chobani,0,0,1
 Cinnagen,0,0,1
 "CinPhloro Pharma, LLC",0,0,1
 "Clarametyx Biosciences, Inc.",0,0,1
@@ -5866,6 +5871,7 @@ IC-MedTech Corporation,0,0,1
 "ICARES Medicus, Inc.",0,0,1
 ICM Biotech Australia Pty Ltd.,0,0,1
 "Icosavax, Inc.",0,0,1
+"IDBiologics, Inc.",0,0,1
 IgGenix Australia Pty Ltd,0,0,1
 iGluco,0,0,1
 "ILAb Co., Ltd.",0,0,1
@@ -6073,6 +6079,7 @@ Nipro Medical Corporation,0,0,1
 NIRA Innovations Inc.,0,0,1
 Nirsum Labs,0,0,1
 "Noah Pharmaceuticals, Inc.",0,0,1
+Notos Medical Limited,0,0,1
 Novatek Pharmaceuticals,0,0,1
 Novozymes A/S,0,0,1
 "NOWDiagnostics, Inc.",0,0,1
@@ -6124,6 +6131,7 @@ Phynova Group Ltd,0,0,1
 Pixacare,0,0,1
 Pneumacare Ltd,0,0,1
 PolarityTE,0,1,1
+Polisorb Joint Stock Company,0,1,1
 Portal Access Ltd.,0,0,1
 "Portal Diabetes, Inc.",0,0,1
 Positrigo AG,0,0,1
@@ -6188,7 +6196,6 @@ Samson Clinical Operations Pty Ltd,0,1,1
 Sana Health,0,0,1
 Sanotize Research and Development corp.,0,0,1
 Sarah Wragge Wellness,0,0,1
-"SATO Pharmaceutical Co., Ltd.",0,0,1
 Saving Patients' Lives Medical B.V.,0,1,1
 "Scientific Motion Technologies, Inc.",0,0,1
 "Scilex Pharmaceuticals, Inc.",0,0,1
