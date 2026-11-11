@@ -2007,7 +2007,6 @@ Amryt Pharma,1,1,3
 Apyx Medical,1,0,3
 Arthrosi Therapeutics,1,2,3
 Artiria Medical,1,0,3
-Barinthus Biotherapeutics,1,0,3
 Beckley Psytech Limited,1,0,3
 "Beijing Minhai Biotechnology Co., Ltd",1,3,3
 Biofrontera Inc.,1,2,3
@@ -2149,6 +2148,7 @@ Axon srl,1,0,2
 Azalea Vision,1,0,2
 Azitra Inc.,1,0,2
 Balt USA,1,0,2
+Barinthus Biotherapeutics,1,0,2
 "Basking Biosciences, Inc.",1,0,2
 Baylx Inc.,1,0,2
 Beacon Biosignals,1,0,2
@@ -2228,7 +2228,6 @@ Enalare Therapeutics Inc.,1,0,2
 EnnovaBio,1,0,2
 Enzymedica,1,0,2
 Epirium Bio Inc.,1,0,2
-"ETS Wound Care, LLC",1,0,2
 Eveliqure Biotechnologies GmbH,1,0,2
 Evidation Health,1,0,2
 Exegenesis Bio,1,0,2
@@ -2273,7 +2272,6 @@ IAS Skin Care,1,0,2
 ICM Co. Ltd.,1,0,2
 Ideal Medical Technologies,1,0,2
 iHealthScreen Inc,1,0,2
-"Imbria Pharmaceuticals, Inc.",1,0,2
 Immuno Cure Holding (HK) Limited,1,0,2
 "Immunwork, Inc.",1,0,2
 Inflammasome Therapeutics,1,0,2
@@ -2294,7 +2292,6 @@ ISISPHARMA,1,0,2
 Jonathan Vaisberg,1,0,2
 Juro Sciences Inc.,1,0,2
 Kadence Bio,1,0,2
-Kahr Medical,1,0,2
 Karo Pharma AB,1,0,2
 Kernel,1,0,2
 "Kira Pharmacenticals (US), LLC.",1,0,2
@@ -3360,6 +3357,7 @@ ESTEVE Pharmaceuticals SAS,1,0,1
 "Estrella Immunopharma, Inc.",1,0,1
 "Ethyreal Bio, Inc.",1,0,1
 Etnova Therapeutics Corp.,1,0,1
+"ETS Wound Care, LLC",1,0,1
 EuMelaReg gGmbH,1,0,1
 "Euphrates Vascular, Inc.",1,0,1
 Eupraxia Pharmaceuticals Inc.,1,0,1
@@ -3649,6 +3647,7 @@ IMADIS Technologies et Services,1,0,1
 "ImagiRation, LLC",1,0,1
 "Imara, Inc.",1,0,1
 Imbed Biosciences,1,0,1
+"Imbria Pharmaceuticals, Inc.",1,0,1
 ImCare Biotech,1,0,1
 "IMGT Co., Ltd.",1,0,1
 Immedica Pharma US Inc,1,0,1
@@ -3764,6 +3763,7 @@ Jun Zhou,1,0,1
 Jung Diagnostics GmbH,1,0,1
 "Juri Biosciences, Inc.",1,0,1
 Kahr Bio Australia Pty Ltd,1,0,1
+Kahr Medical,1,0,1
 "Kairon Connect, PBC",1,0,1
 Kaken Pharmaceutical,1,1,1
 KaliVir Immunotherapeutics,1,0,1
@@ -5274,7 +5274,6 @@ OmniSolutions Laboratory Holdings Limited,0,0,6
 "CalciMedica, Inc.",0,0,5
 Denovo Biopharma LLC,0,2,5
 EpiEndo Pharmaceuticals,0,0,5
-Fulcrum Therapeutics,0,1,5
 Indivior Inc.,0,0,5
 "Inmune Bio, Inc.",0,1,5
 Intercept Pharmaceuticals,0,2,5
@@ -5296,6 +5295,7 @@ Carebot s.r.o.,0,0,4
 "Carmot Therapeutics, Inc.",0,0,4
 CID S.p.A.,0,0,4
 "EIT Pharma, Inc.",0,0,4
+Fulcrum Therapeutics,0,0,4
 Hutchison Medipharma Limited,0,2,4
 "Instituto Grifols, S.A.",0,3,4
 "Invirsa, Inc.",0,0,4
@@ -5319,7 +5319,6 @@ Altria Client Services LLC,0,0,3
 "Auris Health, Inc.",0,0,3
 Bio Nature Health,0,0,3
 Biosearch S.A.,0,0,3
-"Bleep, LLC",0,0,3
 Boka LLC,0,0,3
 "Boundless Bio, Inc.",0,0,3
 "Cala Health, Inc.",0,0,3
@@ -5327,7 +5326,6 @@ Cardior Pharmaceuticals GmbH,0,0,3
 "Carl Zeiss Meditec, Inc.",0,0,3
 "CinDome Pharma, Inc.",0,0,3
 Cingulate Therapeutics,0,3,3
-"Clear Scientific, Inc.",0,0,3
 Closed Loop Medicine,0,0,3
 "Cocrystal Pharma, Inc.",0,0,3
 Cordio Medical,0,0,3
@@ -5422,6 +5420,7 @@ Cell to Cure ApS,0,0,2
 Cellese Inc.,0,0,2
 CENTOGENE GmbH Rostock,0,0,2
 ChemomAb Ltd.,0,0,2
+"Clear Scientific, Inc.",0,0,2
 Clexio Biosciences Ltd.,0,0,2
 "Click Therapeutics, Inc.",0,2,2
 "Crestone, Inc",0,0,2
@@ -5613,7 +5612,6 @@ Aquestive Therapeutics,0,0,1
 "Aquyre Bioscience, Inc",0,0,1
 Araclon Biotech S.L.,0,0,1
 Arbele Pty Ltd,0,0,1
-"Arbor Pharmaceuticals, Inc.",0,0,1
 Ariceum Therapeutics GmbH,0,0,1
 ARKAY Therapeutics,0,0,1
 "Armaceutica, Inc.",0,0,1
@@ -6045,7 +6043,6 @@ Neola Medical AB,0,0,1
 Neomente SAS,0,0,1
 Neopharm Bulgaria Ltd.,0,0,1
 Neovia Oncology Ltd.,0,0,1
-Nerre Therapeutics Ltd.,0,0,1
 Nestmedic Spolka Akcyjna,0,0,1
 "Neurable, Inc",0,0,1
 "Neuracle Science Co., LTD.",0,0,1
@@ -6152,7 +6149,6 @@ PT Royal Medikalink Pharmalab,0,0,1
 QL Biopharmaceutical Australia Pty Ltd,0,0,1
 "QOL Medical, LLC",0,0,1
 "QSAM Therapeutics, Inc.",0,0,1
-"Quantum Applied Science & Research, Inc.",0,0,1
 Quantum Biopharma,0,0,1
 Quantum Surgical,0,0,1
 Quit Center LLC,0,0,1
@@ -6220,7 +6216,6 @@ SHEN.AI spółka z ograniczoną odpowiedzialnością oddział w Polsce,0,0,1
 Shenyang Jinghua Hospital,0,0,1
 "Shenzhen Hygieia Biotech Co., Ltd",0,0,1
 "Shenzhen Protgen Co., Ltd.",0,0,1
-Shield Therapeutics,0,1,1
 "Shineway Pharmaceutical Co.,Ltd",0,1,1
 "Shuttle Pharmaceuticals, Inc.",0,0,1
 "Signal House Co., Ltd.",0,0,1
