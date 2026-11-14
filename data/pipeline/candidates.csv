@@ -205,7 +205,6 @@ Kodiak Sciences Inc,4,5,5
 "Leadingtac Pharmaceutical (Shaoxing) Co., Ltd.",4,0,5
 "Liberating Technologies, Inc.",4,0,5
 Magnetic Tides,4,0,5
-Marea Therapeutics,4,0,5
 "MeiraGTx, LLC",4,0,5
 MindRank AI Ltd,4,1,5
 Nerviano Medical Sciences,4,0,5
@@ -295,6 +294,7 @@ Keri Medical SA,4,0,4
 "Kunming Pharmaceuticals, Inc.",4,0,4
 Labo'Life,4,0,4
 "Liaoning Chengda Biotechnology CO., LTD",4,0,4
+Marea Therapeutics,4,0,4
 MarsiBionics,4,0,4
 Maxigen Biotech Inc.,4,0,4
 MediBeacon,4,0,4
@@ -2070,7 +2070,6 @@ PharmAbcine,1,0,3
 Pi-cardia,1,0,3
 "Primo Biotechnology Co., Ltd",1,1,3
 Rapid Medical,1,0,3
-"Raydiant Oximetry, Inc.",1,0,3
 Retension Pharmaceuticals. Inc.,1,0,3
 Rob Surgical Systems S.L.,1,0,3
 Sedana Medical,1,3,3
@@ -2249,7 +2248,6 @@ First Ascent Biomedical Inc.,1,0,2
 "Flourish Science, Inc.",1,0,2
 Fore Biotherapeutics,1,0,2
 "ForQaly Medical (Shanghai) Co., Ltd",1,0,2
-Fractyl Health Inc.,1,0,2
 Freenome Holdings Inc.,1,0,2
 "G2e Co., Ltd",1,0,2
 Galecto Biotech AB,1,0,2
@@ -2398,6 +2396,7 @@ QurAlis Corporation,1,0,2
 QVITI S.A.,1,0,2
 Rapamycin Holdings Inc.,1,1,2
 Rare Thyroid Therapeutics International AB,1,1,2
+"Raydiant Oximetry, Inc.",1,0,2
 Rayner Intraocular Lenses Limited,1,0,2
 "ReGelTec, Inc.",1,0,2
 "Rempex (a wholly owned subsidiary of Melinta Therapeutics, LLC)",1,0,2
@@ -3443,6 +3442,7 @@ ForSight Robotics Ltd,1,0,1
 Fortis Medical Devices Limited,1,0,1
 Forward Therapeutics,1,0,1
 FoRx Therapeutics AG,1,0,1
+Fractyl Health Inc.,1,0,1
 Freiburger Medizintechnik GmbH,1,0,1
 "FrontAce Scientific Co., Ltd",1,0,1
 Frontier Medicines Corporation,1,0,1
@@ -5469,7 +5469,6 @@ Kieron.Day,0,0,2
 Kioga Inc.,0,0,2
 Kranus Health GmbH,0,0,2
 Laura Feemster,0,0,2
-Laurent Pharmaceuticals Inc.,0,2,2
 Leidos Life Sciences,0,0,2
 Levomecor Inc.,0,2,2
 LGD,0,0,2
@@ -5663,7 +5662,6 @@ Bio Sidus SA,0,1,1
 BioArctic AB,0,0,1
 Biocol Labs,0,0,1
 Biocon Biologics UK Ltd,0,1,1
-Bioeq GmbH,0,1,1
 BioFire Defense LLC,0,0,1
 "BioGrowing Co., Ltd",0,0,1
 BioKier Inc.,0,0,1
@@ -5954,6 +5952,7 @@ Labrha,0,0,1
 Lady Technologies Inc,0,0,1
 Larena SAS,0,0,1
 Lassen Therapeutics Inc.,0,0,1
+Laurent Pharmaceuticals Inc.,0,1,1
 Leberstiftungs-GmbH Deutschland,0,0,1
 Levicept,0,0,1
 Lexaria Bioscience Corp.,0,0,1
