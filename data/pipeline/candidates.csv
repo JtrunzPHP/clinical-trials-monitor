@@ -930,7 +930,6 @@ Oculis,2,5,5
 Orphalan,2,1,5
 Prelude Therapeutics Incorporated,2,0,5
 Procare Health Iberia S.L.,2,0,5
-"Sight Sciences, Inc.",2,0,5
 Sino Medical Sciences Technology Inc.,2,0,5
 Standard Process Inc.,2,0,5
 Suven Life Sciences Limited,2,2,5
@@ -995,12 +994,12 @@ SCF Pharma,2,0,4
 Science Corporation,2,0,4
 Sebela Women's Health Inc.,2,2,4
 Sensorion,2,0,4
+"Sight Sciences, Inc.",2,0,4
 SOFIE,2,2,4
 Sparrow Pharmaceuticals,2,0,4
 Tcelltech Inc.,2,0,4
 Toivoa Inc,2,0,4
 "Tonix Pharmaceuticals, Inc.",2,0,4
-Transgene,2,0,4
 Uniquity One (UNI),2,0,4
 Vor Biopharma,2,4,4
 Wockhardt,2,2,4
@@ -1079,7 +1078,6 @@ Genelux Corporation,2,1,3
 "Gravitas Medical, Inc.",2,0,3
 Harrow Inc,2,1,3
 HemoCept Inc.,2,0,3
-HemoSonics LLC,2,0,3
 HiDO Technologies,2,0,3
 HitGen Inc.,2,0,3
 Hope Biosciences LLC,2,0,3
@@ -1171,7 +1169,6 @@ SOTIO Biotech a.s.,2,0,3
 SPARK Biopharma,2,0,3
 Spinal Stabilization Technologies,2,0,3
 "Spirair, Inc",2,0,3
-SRI International,2,0,3
 "Sutro Biopharma, Inc.",2,0,3
 "Suzhou Junjing BioSciences Co., Ltd.",2,0,3
 "Synchron, Inc.",2,0,3
@@ -1185,6 +1182,7 @@ Toll Biotech Co. Ltd. (Beijing),2,0,3
 Tolmar Inc.,2,2,3
 "Toray Industries, Inc",2,0,3
 Trak Health Solutions S.L.,2,0,3
+Transgene,2,0,3
 Translumina GmbH,2,0,3
 Trellis Bioscience LLC,2,0,3
 "Trust Bio-sonics, Inc.",2,2,3
@@ -1488,6 +1486,7 @@ Heidelberg Engineering GmbH,2,0,2
 Helaina Inc.,2,0,2
 Hemanext,2,0,2
 Hemay Pharmaceutical PTY. LTD.,2,0,2
+HemoSonics LLC,2,0,2
 Herbarium Laboratorio Botanico Ltda,2,0,2
 Herrick Medical LLC,2,0,2
 "Hexin (Suzhou) Pharmaceutical Technology Co., Ltd",2,0,2
@@ -1808,6 +1807,7 @@ SpectraCure AB,2,0,2
 Spiderwort Biotechnologies Inc.,2,0,2
 Splice Bio,2,0,2
 "Square2 Systems, Inc.",2,0,2
+SRI International,2,0,2
 Stelexis BioSciences,2,0,2
 Stella Pharma Corporation,2,0,2
 "StemCyte, Inc.",2,1,2
@@ -5777,7 +5777,6 @@ Edenboost,0,0,1
 EffePharm LTD,0,0,1
 Ekalab S.r.l.,0,0,1
 "Electromedical Products International, Inc.",0,0,1
-Elevation Oncology,0,0,1
 Elucid Bioimaging Inc.,0,0,1
 Endok s.r.l.,0,0,1
 Endovascular Engineering,0,0,1
@@ -5871,7 +5870,6 @@ IC-MedTech Corporation,0,0,1
 ICM Biotech Australia Pty Ltd.,0,0,1
 "Icosavax, Inc.",0,0,1
 "IDBiologics, Inc.",0,0,1
-IgGenix Australia Pty Ltd,0,0,1
 iGluco,0,0,1
 "ILAb Co., Ltd.",0,0,1
 Imbrium Therapeutics,0,0,1
@@ -5893,7 +5891,6 @@ InflaRx GmbH,0,0,1
 Ingenion Medical Limited,0,0,1
 "Inhale, Inc",0,0,1
 "INIBIO Co., Ltd.",0,1,1
-InnoNext Sarl,0,1,1
 Inreda Diabetic B.V.,0,0,1
 "Insight Lifetech Co., Ltd.",0,0,1
 "Insignis Therapeutics, Inc.",0,0,1
@@ -6146,7 +6143,6 @@ Primocure Pharma,0,0,1
 Principal Engineering s.r.o.,0,0,1
 PRInnovation GmbH,0,0,1
 Prokarium Ltd,0,0,1
-Prolong Pharmaceuticals,0,0,1
 ProstaCare Pty Ltd,0,0,1
 Protego Biopharma Pty Ltd,0,0,1
 Protembis GmbH,0,0,1
@@ -6217,7 +6213,6 @@ Sermonix Pharmaceuticals Inc.,0,0,1
 "Shanghai iCELL Biotechnology Co., Ltd, Shanghai, China",0,0,1
 "Shanghai Kanda Biotechnology Co., Ltd.",0,0,1
 Shaperon,0,0,1
-"Shasqi, Inc.",0,0,1
 SHEN.AI spółka z ograniczoną odpowiedzialnością oddział w Polsce,0,0,1
 Shenyang Jinghua Hospital,0,0,1
 "Shenzhen Hygieia Biotech Co., Ltd",0,0,1
