@@ -1,9 +1,9 @@
 {
-  "lastRun": "2026-11-18T14:45:56.190Z",
+  "lastRun": "2026-11-19T14:52:47.825Z",
   "processed": 1500,
-  "remainingAfterRun": 12162,
+  "remainingAfterRun": 12150,
   "errors": 0,
-  "calls": 1523,
-  "collected": 3001,
-  "total": 13698
+  "calls": 1520,
+  "collected": 2998,
+  "total": 13686
 }
