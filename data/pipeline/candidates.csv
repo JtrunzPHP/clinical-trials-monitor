@@ -157,7 +157,6 @@ Cardiovalve Ltd.,4,0,7
 "Cytrellis Biosystems, Inc.",4,0,7
 "Definium Therapeutics US, Inc.",4,4,7
 Grifols Therapeutics LLC,4,5,7
-"Humacyte, Inc.",4,5,7
 "Jiangsu Aidea Pharmaceutical Group Co., Ltd.",4,1,7
 POLYSAN Scientific & Technological Pharmaceutical Company,4,2,7
 Spinogenix,4,2,7
@@ -166,6 +165,7 @@ AbelZeta Inc.,4,0,6
 CLASSYS Inc.,4,0,6
 Compass Therapeutics,4,1,6
 "Endogenex, Inc.",4,0,6
+"Humacyte, Inc.",4,4,6
 "HUYABIO International, LLC.",4,1,6
 Igenomix,4,0,6
 "Immorna Biotherapeutics, Inc.",4,0,6
@@ -994,7 +994,6 @@ Persephone Biosciences,2,0,4
 ReCode Therapeutics,2,0,4
 "ReFlow Medical, Inc.",2,0,4
 "Relmada Therapeutics, Inc.",2,3,4
-Reunion Neuroscience Inc,2,0,4
 Rovi Pharmaceuticals Laboratories,2,1,4
 SCF Pharma,2,0,4
 Science Corporation,2,0,4
@@ -1053,7 +1052,6 @@ Clover Link,2,0,3
 Complement Therapeutics,2,0,3
 Compremium AG,2,0,3
 Compugen Ltd,2,0,3
-Conceivable Life Sciences,2,0,3
 "COUR Pharmaceutical Development Company, Inc.",2,0,3
 "Cryosa, Inc.",2,0,3
 Cumberland Pharmaceuticals,2,0,3
@@ -1076,7 +1074,6 @@ Gemma Biotherapeutics,2,0,3
 Genelux Corporation,2,1,3
 "Genprex, Inc.",2,0,3
 "Gentuity, LLC",2,0,3
-"Gravitas Medical, Inc.",2,0,3
 Harrow Inc,2,1,3
 HemoCept Inc.,2,0,3
 HiDO Technologies,2,0,3
@@ -1148,7 +1145,6 @@ Ouraring Inc.,2,0,3
 "Pharmbio Korea Co., Ltd.",2,2,3
 Phenox GmbH,2,0,3
 Point Designs,2,0,3
-PolyActiva Pty Ltd,2,0,3
 Price Vision Group,2,3,3
 "ProDa BioTech, LLC",2,0,3
 Prove pharm,2,1,3
@@ -1159,6 +1155,7 @@ Prove pharm,2,1,3
 "Reprieve Cardiovascular, Inc",2,0,3
 Restor3D,2,0,3
 Rethink Medical SL,2,0,3
+Reunion Neuroscience Inc,2,0,3
 "Rigicon, Inc.",2,0,3
 River 2 Renal Corp.,2,0,3
 "Rivus Pharmaceuticals, Inc.",2,0,3
@@ -1354,6 +1351,7 @@ City Therapeutics,2,0,2
 ClinLogic LLC,2,0,2
 CNBG-Virogin Biotech (Shanghai) Ltd.,2,0,2
 Cognita Labs LLC,2,0,2
+Conceivable Life Sciences,2,0,2
 Consun Pharmaceutical Group,2,0,2
 "CorDx, Inc.",2,0,2
 CorFlow Therapeutics AG,2,0,2
@@ -1461,6 +1459,7 @@ GIE Medical,2,2,2
 "GigaGen, Inc.",2,0,2
 Givaudan France Naturals,2,0,2
 Gliknik Inc.,2,0,2
+"Gravitas Medical, Inc.",2,0,2
 GrayMatters Health Ltd.,2,0,2
 Great Novel Therapeutics Biotech & Medicals Corporation,2,0,2
 "Guangdong Hengqin Novagains Biopharmaceutical Co., Ltd.",2,0,2
@@ -1710,6 +1709,7 @@ Pierian Biosciences,2,0,2
 Pleryon Therapeutics (Hangzhou) Limited,2,0,2
 Plexaa Ltd,2,0,2
 "PMV Pharmaceuticals, Inc",2,0,2
+PolyActiva Pty Ltd,2,0,2
 PreludeDx,2,0,2
 "Prenosis, Inc.",2,0,2
 "Presidio Medical, Inc",2,0,2
@@ -2067,7 +2067,6 @@ NVT GmbH,1,0,3
 "Perfect Lens, LLC",1,0,3
 PharmAbcine,1,0,3
 "PharmaNest, Inc",1,0,3
-Pi-cardia,1,0,3
 "Primo Biotechnology Co., Ltd",1,1,3
 Rapid Medical,1,0,3
 Retension Pharmaceuticals. Inc.,1,0,3
@@ -2169,7 +2168,6 @@ Biophytis,1,1,2
 "Biotheryx, Inc.",1,0,2
 Blue Blood Biotech Corp.,1,0,2
 BMI Korea,1,1,2
-"Bolt Biotherapeutics, Inc.",1,0,2
 Bragg Live Food Products,1,0,2
 Brainlab AG,1,0,2
 Brainsway,1,0,2
@@ -2222,7 +2220,6 @@ DiaMedica Therapeutics Inc,1,1,2
 Diamyd Medical AB,1,1,2
 DigitalRehab,1,0,2
 Dimagi Inc.,1,0,2
-"DiscGenics, Inc.",1,1,2
 Dong Wha Pharmaceutical Co. Ltd.,1,0,2
 Dr. August Wolff GmbH & Co. KG Arzneimittel,1,0,2
 Edesa Biotech Inc.,1,1,2
@@ -2383,6 +2380,7 @@ Pharmasaga Co. Ltd.,1,0,2
 Pharmavite LLC,1,0,2
 Pheon Therapeutics,1,0,2
 Physio-Assist,1,0,2
+Pi-cardia,1,0,2
 "Polaryx Therapeutics, Inc.",1,1,2
 Polyganics BV,1,0,2
 POROUS GmbH,1,0,2
@@ -2934,6 +2932,7 @@ BlueWind Medical,1,0,1
 BnH Research,1,0,1
 Bochang,1,0,1
 "Bold Therapeutics, Inc.",1,0,1
+"Bolt Biotherapeutics, Inc.",1,0,1
 Bolt Medical,1,0,1
 Bond Biosciences,1,0,1
 Bone Biologics Corp,1,0,1
@@ -3251,6 +3250,7 @@ DIGMBIO,1,0,1
 Dignify Therapeutics,1,0,1
 DILO Medical,1,0,1
 Dimerix Bioscience Pty Ltd,1,1,1
+"DiscGenics, Inc.",1,1,1
 Dispatch Biotherapeutics,1,0,1
 Distal Inc.,1,0,1
 DITU Inc.,1,0,1
@@ -5303,7 +5303,6 @@ OmniSolutions Laboratory Holdings Limited,0,0,6
 "Vitaflo International, Ltd",0,0,6
 "CalciMedica, Inc.",0,0,5
 Denovo Biopharma LLC,0,2,5
-EpiEndo Pharmaceuticals,0,0,5
 Indivior Inc.,0,0,5
 "Inmune Bio, Inc.",0,1,5
 Intercept Pharmaceuticals,0,2,5
@@ -5325,6 +5324,7 @@ Carebot s.r.o.,0,0,4
 "Carmot Therapeutics, Inc.",0,0,4
 CID S.p.A.,0,0,4
 "EIT Pharma, Inc.",0,0,4
+EpiEndo Pharmaceuticals,0,0,4
 Fulcrum Therapeutics,0,0,4
 Hutchison Medipharma Limited,0,2,4
 "Instituto Grifols, S.A.",0,3,4
@@ -5490,7 +5490,6 @@ Grape King Bio Ltd.,0,0,2
 "GUAYAKI SUSTAINABLE RAINFOREST PRODUCTS, INC.",0,0,2
 "Hanpoong Nature Pharm Co., Ltd.",0,0,2
 Healios K.K.,0,2,2
-HearX SA,0,0,2
 Hervor Therapeutics,0,0,2
 iHealth Labs inc,0,0,2
 "INCREDIWEAR HOLDINGS, INC.",0,0,2
@@ -5498,7 +5497,6 @@ INQUIS Clinical Research,0,0,2
 "Intima Bioscience, Inc.",0,0,2
 JelikaLite LLC,0,0,2
 "Kanyos Bio, Inc., a wholly-owned subsidiary of Anokion SA",0,0,2
-Keryx Biopharmaceuticals,0,2,2
 Kieron.Day,0,0,2
 Kioga Inc.,0,0,2
 Kranus Health GmbH,0,0,2
@@ -5809,7 +5807,6 @@ EffePharm LTD,0,0,1
 Ekalab S.r.l.,0,0,1
 "Electromedical Products International, Inc.",0,0,1
 Elucid Bioimaging Inc.,0,0,1
-Endok s.r.l.,0,0,1
 Endovascular Engineering,0,0,1
 Ennogen Healthcare Limited,0,0,1
 Entera Bio Ltd.,0,0,1
@@ -5960,6 +5957,7 @@ Jupiter Endovascular,0,0,1
 Kariya Pharmaceuticals,0,0,1
 KAZM Pharmaceuticals Inc.,0,1,1
 Kendal Nutricare Ltd,0,1,1
+Keryx Biopharmaceuticals,0,1,1
 Keuro MedTech,0,0,1
 Keystone OrthotropiX,0,0,1
 Kimberly-Clark Corporation,0,0,1
@@ -5985,7 +5983,6 @@ Larena SAS,0,0,1
 Lassen Therapeutics Inc.,0,0,1
 Laurent Pharmaceuticals Inc.,0,1,1
 Leberstiftungs-GmbH Deutschland,0,0,1
-Levicept,0,0,1
 Lexaria Bioscience Corp.,0,0,1
 Lightfield Medical,0,0,1
 Ligno Biotech Sdn. Bhd.,0,0,1
@@ -6057,7 +6054,6 @@ Mitocholine Ltd,0,0,1
 "Molecular Targeting Technologies, Inc.",0,0,1
 Momentum Data,0,0,1
 "Moonlight Therapeutics, Inc.",0,0,1
-MSP Starch Products Inc.,0,0,1
 Muse Nutrition Ltd,0,0,1
 MVG Industries SAS,0,0,1
 Mycotech Pharma AS,0,0,1
@@ -6188,7 +6184,6 @@ QL Biopharmaceutical Australia Pty Ltd,0,0,1
 Quantum Biopharma,0,0,1
 Quantum Surgical,0,0,1
 Quit Center LLC,0,0,1
-Quit Genius,0,1,1
 "Quivive Pharma, Inc.",0,0,1
 Qwince Innovation S.r.l.,0,0,1
 RashEndZ Inc.,0,0,1
@@ -6260,7 +6255,6 @@ Silq Technologies Corporation,0,0,1
 Silver Creek Pharmaceuticals,0,0,1
 Simon Williamson Clinic,0,0,1
 "SimpleC, LLC",0,0,1
-"Siolta Therapeutics, Inc.",0,0,1
 Sixera Pharma,0,0,1
 "SK Chemicals Co., Ltd.",0,0,1
 Sleep Cycle AB,0,0,1
