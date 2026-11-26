@@ -148,11 +148,11 @@ Shanghai AbelZeta Ltd.,5,0,5
 "Transcenta Therapeutics (Hangzhou) Co., Ltd.",5,1,5
 "XellSmart Bio-Pharmaceutical (Suzhou) Co., Ltd.",5,0,5
 Sonova AG,4,0,12
-Kenvue Brands LLC,4,1,9
 Trevi Therapeutics,4,2,9
 "Chongqing Peg-Bio Biopharm Co., Ltd.",4,1,8
 Gaia AG,4,0,8
 "Jiangsu Aidea Pharmaceutical Group Co., Ltd.",4,1,8
+Kenvue Brands LLC,4,1,8
 "Taizhou Mabtech Pharmaceutical Co.,Ltd",4,4,8
 "Wanbangde Pharmaceutical Group Co., LTD",4,1,8
 "Ahn-Gook Pharmaceuticals Co.,Ltd",4,3,7
@@ -229,7 +229,6 @@ Primus Pharmaceuticals,4,0,5
 Sahajanand Medical Technologies Limited,4,0,5
 "Shanghai Shenqi Medical Technology Co., Ltd",4,0,5
 "Shenzhen Shenxin Biotechnology Co., Ltd",4,0,5
-Sinocare,4,0,5
 "Sirius Therapeutics Co., Ltd.",4,0,5
 "Spark Biomedical, Inc.",4,0,5
 StimLabs,4,0,5
@@ -351,6 +350,7 @@ Shenzhen Hemogen,4,0,4
 "Shenzhen Kangzhe Biotechnology Co., Ltd.",4,0,4
 Silimed Industria de Implantes Ltda,4,0,4
 Sinfatin S.L,4,0,4
+Sinocare,4,0,4
 SleepRes Inc.,4,0,4
 SparingVision,4,0,4
 Spectrocor,4,0,4
@@ -429,7 +429,6 @@ Transcend Therapeutics,3,3,6
 "Traws Pharma, Inc.",3,0,6
 Acorn Biolabs Inc.,3,0,5
 "Aptabio Therapeutics, Inc.",3,0,5
-"Beijing Sungen Biomedical Technology Co., Ltd",3,0,5
 BioLab Holdings,3,0,5
 Blue Earth Diagnostics,3,0,5
 Bright Uro,3,0,5
@@ -478,6 +477,7 @@ Antev Ltd.,3,0,4
 Apple Inc.,3,0,4
 "Apreo Health, Inc.",3,0,4
 "Beijing Bio-Targeting Therapeutics Technology Co., Ltd",3,0,4
+"Beijing Sungen Biomedical Technology Co., Ltd",3,0,4
 Berlin Heals GmbH,3,0,4
 "BioCardia, Inc.",3,0,4
 "BioLite, Inc.",3,0,4
@@ -893,7 +893,6 @@ ITB-Med LLC,2,0,7
 "Lumosa Therapeutics Co., Ltd.",2,1,7
 Omeros Corporation,2,2,7
 PureTech,2,1,7
-Sino Medical Sciences Technology Inc.,2,0,7
 Solventum US LLC,2,0,7
 "Vincentage Pharma Co., Ltd",2,1,7
 "Atea Pharmaceuticals, Inc.",2,2,6
@@ -906,6 +905,7 @@ IVIEW Therapeutics Inc.,2,0,6
 Latigo Biotherapeutics,2,0,6
 LimmaTech Biologics AG,2,0,6
 Moximed,2,0,6
+Sino Medical Sciences Technology Inc.,2,0,6
 Sirnaomics,2,0,6
 Spur Therapeutics,2,1,6
 "Aclaris Therapeutics, Inc.",2,0,5
@@ -2398,7 +2398,6 @@ Presage Biosciences,1,0,2
 "Prevention Strategies, LLC",1,0,2
 Priothera SAS,1,1,2
 Psoriasis Research Institute of Guangzhou,1,1,2
-Pulmongene Ltd.,1,0,2
 "Pulvinar Neuro, LLC",1,0,2
 "Qingdao WanMing BioCell Pharmaceutics Co.,Ltd.",1,0,2
 QurAlis Corporation,1,0,2
@@ -4552,6 +4551,7 @@ Psivac Ltd,1,0,1
 Psyence Australia Pty Ltd,1,0,1
 PsyScale,1,0,1
 PT. JES Kasih Nusantara Sejahterah,1,0,1
+Pulmongene Ltd.,1,0,1
 "Pulmotect, Inc.",1,0,1
 "Pulnovo Medical, Inc.",1,0,1
 Pulse Wave USA,1,0,1
@@ -5525,7 +5525,6 @@ Max Zeller Soehne AG,0,0,2
 Medline Industries,0,0,2
 Medos International SARL,0,0,2
 "Meiji Seika Pharma Co., Ltd.",0,2,2
-"Melinta Therapeutics, LLC",0,0,2
 Mexbrain,0,0,2
 Motric Bio,0,0,2
 MT Ortho s.r.l.,0,0,2
@@ -6053,6 +6052,7 @@ MedTrace Pharma A/S,0,1,1
 MeiraGTx UK II Ltd,0,0,1
 "Meisch Temple Massager, Inc.",0,0,1
 "Melinta Therapeutics, Inc.",0,0,1
+"Melinta Therapeutics, LLC",0,0,1
 Memorises Bio,0,0,1
 Meta Platforms Technologies LLC,0,0,1
 Metabolics Pharma,0,0,1
@@ -6081,7 +6081,6 @@ N REMEDIER (M) SDN BHD,0,0,1
 "Nang Kuang Pharmaceutical Co., Ltd.",0,0,1
 Nano PharmaSolutions Australia,0,0,1
 "NantBioScience, Inc.",0,0,1
-"NantCell, Inc.",0,0,1
 Natura Cosmeticos S/A,0,0,1
 Nausicaa Medical,0,0,1
 Navitas Pharma,0,0,1
@@ -6362,7 +6361,6 @@ UVISA Health ApS,0,0,1
 "Vasomune Therapeutics, Inc.",0,0,1
 Vaxxas Pty Ltd,0,0,1
 "Ventyx Biosciences, Inc",0,0,1
-Veralox Therapeutics,0,0,1
 Verigraft AB,0,0,1
 Versameb AG,0,0,1
 Vespina Lifesciences Inc.,0,0,1
@@ -6391,7 +6389,6 @@ xCures,0,0,1
 Xintela AB,0,0,1
 Xula Wellness LLC,0,0,1
 XUND Solutions GmbH,0,0,1
-"Yakult Honsha Co., LTD",0,0,1
 "Yaopharma Co., Ltd.",0,0,1
 Yellow Jersey Therapeutics AG,0,0,1
 Yellowbird Diagnostics Inc,0,0,1
@@ -6403,4 +6400,3 @@ Zevra Therapeutics,0,0,1
 "ZOLL Circulation, Inc., USA",0,0,1
 ZSX Medical LLC,0,0,1
 ZYUS Life Sciences Inc.,0,0,1
-"ZyVersa Therapeutics, Inc.",0,0,1
